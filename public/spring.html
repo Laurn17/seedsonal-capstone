@@ -1,0 +1,75 @@
+<!-- CLIENT SIDE LOGIN PAGE HTML -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Seedsonal</title>
+	<meta name="description" content="Keep track of produce youd like to grow by season">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="seasons.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+	<header role="banner">
+		<a href="home.html"><h1>this will be a logo(leaf icon?) top left</h1></a>
+		<nav role="navigation">
+			<a href="spring.html">Spring</a> |
+			<a href="summer.html">Summer</a> |
+			<a href="autumn.html">Autumn</a> |
+			<a href="winter.html">Winter</a> 
+		</nav>
+	</header>
+	
+	<main role="main">
+
+		<div class="common-items">
+			<p> Commonly Grown Produce </p>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+			</ul>
+		</div>
+
+
+		<div class="new-Item" hidden>
+		<form id="newItemForm" >
+			<fieldset>
+		    	<legend></legend>
+		    	<label for="item-name">Item Name:</label>
+		    	<input type="text" id="item-name" required>
+		    	<br>
+
+		    	<label for="germinate">Germinate Indoors:</label>
+		    	<input type="checkbox" id="germinate">
+		    	<br>
+
+		    	<p>Grow From A:</p>
+		    	<input type="radio" id="seed" name="seedOrPlant">
+		    	<label for="seed">Seed</label>
+		    	<input type="radio" id="plant" name="seedOrPlant">
+		   	 	<label for="plant">Plant</label><br/>
+
+		   	 	<label for="plantBy">Plant By:</label>
+		    	<input type="date" id="plantBy">
+		    	<br>
+
+		  		<label for="datePlanted">Date Planted:</label>
+		    	<input type="date" id="datePlanted">  	
+			</fieldset>
+		</form>
+	</div>
+	</main>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="main.js"></script>
+</html>
