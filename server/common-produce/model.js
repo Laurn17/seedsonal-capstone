@@ -1,0 +1,4 @@
+// PLANT SCHEMA FOR ALL COMMON PLANTS 4 SEASONS
+
+// Plant Name
+// Planting Season

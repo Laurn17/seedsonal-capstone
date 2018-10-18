@@ -1,0 +1,35 @@
+/*CLIENT SIDE HOME PAGE CSS*/
+
+* {
+	box-sizing: border-box;
+}
+
+header {
+	text-align: center;
+}
+
+header a {
+	text-decoration: none;
+}
+
+#login, #signUp {
+	text-align: center;
+	border: 1px solid black;
+	margin: 0 auto;
+	background: rgb(204, 255, 204, 0.5);
+	width:	50%;
+}
+
+fieldset {
+	border: none;
+	display: block;
+}
+
+
+
+button {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}

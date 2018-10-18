@@ -1,0 +1,79 @@
+<!-- CLIENT SIDE LOGIN PAGE HTML -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Seedsonal</title>
+	<meta name="description" content="Keep track of produce youd like to grow by season">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	
+	<header role="banner">
+		<a href="index.html"><h1>seedsonal</h1></a>
+		<p>a superb way to remember what you want to plant and when</p>
+	</header>
+	
+	<main role="main">
+		<div class="login-messages">
+			<div id="signUp-success" hidden>
+				<p>User successfully registered.</p>
+			</div>
+			<div id="signUp-error" hidden>
+				<p> Something went wrong</p>
+			</div>
+			<div id="login-error" hidden>
+				<p>Incorrect Username or Password</p>
+			</div>
+		</div>
+
+		<div id="login">
+			<form role="login" action="#" id="login-form">
+				<fieldset>
+						<label for="username">Username</label>
+						<br>
+						<input type="text" id="username" required>
+						<br>
+						<label for="password">Password</label>
+						<br>
+						<input type="password" id="password" required>
+					<button type="submit">Login</button>
+				</fieldset>
+			</form>
+
+			<p>New to this? <span class="register"><u>Sign Up!</u></span></p>
+		</div>
+
+		<div id="signUp" hidden>
+				<form id="signUp-form">
+					<fieldset>
+						<legend>Create Your Account</legend>
+							<label for="signUp-firstName">First name</label>
+							<br>
+							<input type="text" id="signUp-firstName" required>
+								<br>
+							<label for="signUp-lastName">Last name</label>
+							<br>
+							<input type="text" id="signUp-lastName" required>
+								<br>
+							<label for="signUp-username">Username</label>
+							<br>
+							<input type="text" id="signUp-username" required>
+								<br>
+							<label for="signUp-password">Password</label>
+							<br>
+							<input type="password" id="signUp-password" required>
+						
+						<button type="submit">Submit</button>
+					</fieldset>
+			</form>
+		</div>
+	</main>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="main.js"></script>
+</html>
