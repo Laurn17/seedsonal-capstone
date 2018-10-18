@@ -4,6 +4,7 @@ services: mongodb
 deploy:
   provider: heroku
   api_key:
-    secure: 
+    secure: lhEpyB9C00jUpygtOvI+V2RfMkehJr3ZZeSjt+PPiqtuHbTt9YmciOJO41M9YLSGvrHU+Zs5Y3unL4eKMp65sVaBmAKHx6m5frel2G6eJDdZHpPU3BSQ9aNRxoz7Y5khQ8GN4UgO6fypSBWTG1igQVgfJg7NZzBnxoihvPHTFlZplx0QT1QMyIKcp0a5uaCCNQNYgUL2VALglS5C93DkD4CTJsgUZgB7u4ZCkmk+F8so1/lv7NY3Xc5x5kLJpRnbeUrxvZypHVkZAOgigM3UNLctq6iP9RFd2B+tkU/oQwa1Ciop+1+sgO/QOySR+0rtfd7AnkcpyIB69ifszV9Uc/M+I0EftmOxyrvziZ8SQuzrXUPUUpd3oL/c6XagrHBS0HUH7b3bqsLFp/fuB+zUYTSGBU8PVIGX9ubshtBpp3aOWVZe1wIlI8SPqV42S8HZGmxVJT8xkROgcc+NYRKmbj86wUVY3tpZgnN4rho9sUEttilaazUp2pcbd6AZ7RIkO3QAxihO5BpW6XviTYP9Ds7zPJG8mqmzeuhs8Jhl9xdRAAOOOGKjHL8rq44PWxewWAscjVOSPG4qy1JrpAw+OOFU/XizHbpUa5XVXzRr8V03DHodsCS1d9s0hKMdJnezRtin29a5rOBTBVesf9pNZM9PXudheL727wE6ySd7y0c=
+  app: agile-hamlet-96595
   on:
-    repo: 
+    repo: https://github.com/Laurn17/seedsonal-capstone
