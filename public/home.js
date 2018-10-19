@@ -32,5 +32,5 @@ function sendToHomePage() {
             </div>
 
         </main>
-         </div>
+         </div> `
 };

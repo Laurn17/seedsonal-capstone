@@ -6,7 +6,7 @@
 // ------------ FUNCTIONS FOR MAIN BROWSER PAGE--------------
 function loginUser(_username, _password) {
     
-    const LOGIN_URL = '/auth/login';
+    const LOGIN_URL = '/api/auth/login';
 
     const user = {
       username: _username,
@@ -72,14 +72,14 @@ function signUpUser(_username, _password, _firstName, _lastName) {
       lastName: _lastName
     };
 
-    const queryB = {   
-        data: JSON.stringify(newUser),
-        contentType: 'application/json',
-        method: 'POST',
-        dataType: 'json'
-    };
+    // const queryB = {   
+    //     data: JSON.stringify(newUser),
+    //     contentType: 'application/json',
+    //     method: 'POST',
+    //     dataType: 'json'
+    // };
 
-    $.getJSON(SIGN_UP_URL, queryB, function() {
+    $.getJSON(SIGN_UP_URL, newUser, function() {
     	console.log("success");
     })
     .done(function() {

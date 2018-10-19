@@ -34,7 +34,7 @@
 		</div>
 
 		<div id="login">
-			<form role="login" action="#" id="login-form">
+			<form role="login" action="/api/auth/login" id="login-form" method ="post">
 				<fieldset>
 						<label for="username">Username</label>
 						<br>
@@ -51,7 +51,7 @@
 		</div>
 
 		<div id="signUp" hidden>
-				<form id="signUp-form">
+				<form id="signUp-form" method="post" action="./users">
 					<fieldset>
 						<legend>Create Your Account</legend>
 							<label for="signUp-firstName">First name</label>

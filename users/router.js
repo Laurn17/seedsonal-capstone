@@ -6,6 +6,7 @@ const {User} = require('./models');
 const router = express.Router();
 const jsonParser = bodyParser.json();
 
+router.use(bodyParser.json());
 
 router.post('/', jsonParser, (req, res) => {
   const requiredFields = ['username', 'password'];
@@ -108,7 +109,10 @@ router.post('/', jsonParser, (req, res) => {
       });
     })
     .then(user => {
+      var myData = user;
+      myData.save();
       return res.status(201).json(user.serialize());
+ })
     })
     .catch(err => {
       if (err.reason === 'ValidationError') {

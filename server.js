@@ -6,7 +6,9 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
+
 mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost:8080/seedsonal-capstone");
 
 const { DATABASE_URL, PORT } = require('./config');
 
@@ -91,5 +93,16 @@ function closeServer() {
 if (require.main === module) {
   runServer(DATABASE_URL).catch(err => console.error(err));
 }
+
+app.post("/api/users", (req, res) => {
+ var myData = new User(req.body);
+ myData.save()
+ .then(item => {
+ res.send("item saved to database");
+ })
+ .catch(err => {
+ res.status(400).send("unable to save to database");
+ });
+});
 
 module.exports = { runServer, app, closeServer };
