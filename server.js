@@ -30,9 +30,21 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use("/users", usersRouter);
-app.use("/auth", authRouter);
-// app.use("/folder for app", whateverINameItRouter); line 19
+
+passport.use(localStrategy);
+passport.use(jwtStrategy);
+
+app.use('/api/users/', usersRouter);
+app.use('/api/auth/', authRouter);
+
+const jwtAuth = passport.authenticate('jwt', { session: false });
+
+app.get('/api/protected', jwtAuth, (req, res) => {
+  return res.json({
+    data: 'rosebud'
+  });
+});
+
 
 
 app.get("/", (req, res) => {

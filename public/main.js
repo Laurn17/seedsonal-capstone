@@ -26,7 +26,7 @@ function loginUser(_username, _password) {
     .done(function(token) {
         localStorage.setItem('authToken', token.authToken);
         localStorage.setItem('username', _username);
-        window.location.href = 'home.html';
+        sendToHomePage();
     })
     .fail(function(err) {
         $('#login-error').prop('hidden', false);
@@ -117,3 +117,4 @@ function onSubmit() {
  // run another function?
   });
 }
+
