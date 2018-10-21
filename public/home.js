@@ -1,17 +1,27 @@
 function sendToHomePage() {
     $('.container').remove();
+    $('.home-page').html(homePageContent);  
+};
+
+function homePageContent() {
     return `
-        <div class = "home-page">
-        <header role="banner">
-            <a href="home.html"><h1>this will be a logo(leaf icon?) top left</h1></a>
-            <nav role="navigation">
-                <a href="spring.html">Spring</a> |
-                <a href="summer.html">Summer</a> |
-                <a href="autumn.html">Autumn</a> |
-                <a href="winter.html">Winter</a> 
-            </nav>
+        <header role="banner" id="sticky-header">
+            <a id="logo" href="home.js"><h1>this will be a logo(leaf icon?) top left</h1>
+            </a>
+                <nav role="navigation">
+                    <ul class = "main-nav">
+                        <li> <a href=".by-season-content" class = "click spring">Spring</a> |</li>
+                        <li> <a href=".by-season-content" class = "click summer">Summer</a> |</li>
+                        <li> <a href=".by-season-content" class = "click autumn">Autumn</a> |</li>
+                        <li> <a href=".by-season-content" class = "click winter">Winter</a></li>
+                    </ul>
+                </nav>
         </header>
         
+        <div class = "by-season-content" >
+        </div>
+
+        <div class = "home-page-content">
         <main role="main">
             
             <div id="gardeningBlurb">
@@ -32,5 +42,16 @@ function sendToHomePage() {
             </div>
 
         </main>
-         </div> `
+        
+        </div> `;
 };
+
+function watchSpringClick() {
+    $('.main-nav li').on('click', '.spring', function(event) {
+        $('.home-page-content').remove();
+        getSpringData();
+        $('.by-season-content').html(springContent);
+    });
+};
+
+$(watchSpringClick);

@@ -8,7 +8,7 @@ const passport = require('passport');
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:8080/seedsonal-capstone");
+mongoose.connect("mongodb://localhost:27017/seedsonal-capstone");
 
 const { DATABASE_URL, PORT } = require('./config');
 

@@ -6,37 +6,31 @@
 // ------------ FUNCTIONS FOR MAIN BROWSER PAGE--------------
 function loginUser(_username, _password) {
     
-    const LOGIN_URL = '/api/auth/login';
-
     const user = {
       username: _username,
       password: _password
     };
 
-	const queryA = {
-		data: JSON.stringify(user),
+    $.ajax({
+        url: '/api/auth/login',
+        data: JSON.stringify(user),
         contentType: 'application/json',
-        dataType: 'json',
         method: 'POST'
-	}
-    
-    $.getJSON(LOGIN_URL, queryA, function() {
-    	console.log("success");
     })
-    .done(function(token) {
+    .done(token => {
         localStorage.setItem('authToken', token.authToken);
         localStorage.setItem('username', _username);
         sendToHomePage();
     })
-    .fail(function(err) {
+    .fail(err => {
         $('#login-error').prop('hidden', false);
     });
 };
 
 function watchLoginSubmit() {
-    $('#login-form').on('submit', function(event) {
+    $('#login-form').on('submit', event => {
         event.preventDefault();
-        var username = $('#username').val();
+        const username = $('#username').val();
         const password = $('#password').val();
         loginUser(username, password);
     });
@@ -63,35 +57,29 @@ function watchSignUpSubmit() {
 
 function signUpUser(_username, _password, _firstName, _lastName) {
     
-    const SIGN_UP_URL = '/users';
-
-    const newUser = {
+    const user = {
       username: _username,
       password: _password,
       firstName: _firstName,
       lastName: _lastName
     };
-
-    // const queryB = {   
-    //     data: JSON.stringify(newUser),
-    //     contentType: 'application/json',
-    //     method: 'POST',
-    //     dataType: 'json'
-    // };
-
-    $.getJSON(SIGN_UP_URL, newUser, function() {
-    	console.log("success");
+    $.ajax({
+        url: '/api/users',
+        data: JSON.stringify(user),
+        contentType: 'application/json',
+        method: 'POST'
     })
     .done(function() {
-        $('#SignUp-success').prop('hidden', false);
+        $('#signUp-success').prop('hidden', false);
+        $('#signUp-error').prop('hidden', true);
         $('#login').prop('hidden', false);
         $('#signUp').prop('hidden', true);
     })
-    .fail(function(err) {
+    .fail(err => {
         $('#signUp-error').prop('hidden', false);
+        $('#signUp-error').html(`<p>${err.responseJSON.message}</p>`);
     });
 };
-
 
   $(watchLoginSubmit);
   $(watchSignUpClick);

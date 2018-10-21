@@ -11,11 +11,15 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="main.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 </head>
 
 <body>
+	<div class ="home-page">
+	</div>
+
 	<div class= "container">
-	<header role="banner">
+	<header id="mainHeader" role="banner">
 		<a href="index.html"><h1>seedsonal</h1></a>
 		<p>a superb way to remember what you want to plant and when</p>
 	</header>
@@ -51,7 +55,7 @@
 		</div>
 
 		<div id="signUp" hidden>
-				<form id="signUp-form" method="post" action="./users">
+				<form id="signUp-form" method="post" action="../api/users">
 					<fieldset>
 						<legend>Create Your Account</legend>
 							<label for="signUp-firstName">First name</label>
@@ -81,4 +85,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="main.js"></script>
 <script src="home.js"></script>
+<script src="spring.js"></script>
 </html>

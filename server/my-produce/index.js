@@ -1,5 +1,5 @@
-// 'use strict';
-// const {?} = require('');
-// const {router} = require('./router');
+'use strict';
+const {Produce} = require('./models');
+const {router} = require('./router');
 
-// module.exports = {?, router};
+module.exports = { Produce, router };
