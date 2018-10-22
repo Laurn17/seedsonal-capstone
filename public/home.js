@@ -1,6 +1,7 @@
 function sendToHomePage() {
     $('.container').remove();
-    $('.home-page').html(homePageContent);  
+    $('.home-page').html(homePageContent);
+    watchSpringClick() 
 };
 
 function homePageContent() {
@@ -10,10 +11,10 @@ function homePageContent() {
             </a>
                 <nav role="navigation">
                     <ul class = "main-nav">
-                        <li> <a href=".by-season-content" class = "click spring">Spring</a> |</li>
-                        <li> <a href=".by-season-content" class = "click summer">Summer</a> |</li>
-                        <li> <a href=".by-season-content" class = "click autumn">Autumn</a> |</li>
-                        <li> <a href=".by-season-content" class = "click winter">Winter</a></li>
+                        <li class = "click spring">Spring |</li>
+                        <li class = "click summer">Summer |</li>
+                        <li class = "click autumn">Autumn |</li>
+                        <li class = "click winter">Winter</li>
                     </ul>
                 </nav>
         </header>
@@ -47,11 +48,9 @@ function homePageContent() {
 };
 
 function watchSpringClick() {
-    $('.main-nav li').on('click', '.spring', function(event) {
+    $('.main-nav li').on('click', function(event) {
         $('.home-page-content').remove();
         getSpringData();
         $('.by-season-content').html(springContent);
     });
 };
-
-$(watchSpringClick);

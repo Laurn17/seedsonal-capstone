@@ -5,13 +5,13 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const produceSchema = mongoose.Schema({
-	username: {type: String, required: true},
 	// season: DO i need this?
 	name: {type: String, required: true},
 	germinateIndoors: {type: Boolean},
-	seedorPlant: radio button, WHAT TYPE IS A RADIO BUTTON??
+	seedorPlant: {type: String, enum: ['Seed', 'Plant']},
 	plantBy: {type: Date, required: true},
-	datePlanted: {type: Date}
+	datePlanted: {type: Date},
+	user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 

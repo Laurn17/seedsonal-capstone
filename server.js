@@ -18,8 +18,8 @@ app.use(express.static("public"));
 
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
-// const { router: ?? } = require('./server/my-produce');
-
+const { router: myProduceRouter} = require('./server/my-produce');
+// IS LINE 21 RIGHT?
 
 // CORS FUNCTION
 app.use(function (req, res, next) {
@@ -38,16 +38,20 @@ passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
+app.use('/server/my-produce/', myProduceRouter);
+// IS LINE 41 RIGHT?
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
-app.get('/api/protected', jwtAuth, (req, res) => {
-  return res.json({
-    data: 'rosebud'
-  });
+app.use('*', (req, res) => {
+  return res.status(404).json({ message: 'Not Found' });
 });
 
-
+// app.get('/api/protected', jwtAuth, (req, res) => {
+//   return res.json({
+//     data: 'rosebud'
+//   });
+// });
 
 app.get("/", (req, res) => {
   res.sendFile("/public/index.html");
@@ -94,15 +98,15 @@ if (require.main === module) {
   runServer(DATABASE_URL).catch(err => console.error(err));
 }
 
-app.post("/api/users", (req, res) => {
- var myData = new User(req.body);
- myData.save()
- .then(item => {
- res.send("item saved to database");
- })
- .catch(err => {
- res.status(400).send("unable to save to database");
- });
-});
+// app.post("/api/users", (req, res) => {
+//  var myData = new User(req.body);
+//  myData.save()
+//  .then(item => {
+//  res.send("item saved to database");
+//  })
+//  .catch(err => {
+//  res.status(400).send("unable to save to database");
+//  });
+// });
 
 module.exports = { runServer, app, closeServer };

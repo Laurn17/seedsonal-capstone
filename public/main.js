@@ -7,8 +7,8 @@
 function loginUser(_username, _password) {
     
     const user = {
-      username: _username,
-      password: _password
+        username: _username,
+        password: _password
     };
 
     $.ajax({
@@ -58,11 +58,12 @@ function watchSignUpSubmit() {
 function signUpUser(_username, _password, _firstName, _lastName) {
     
     const user = {
-      username: _username,
-      password: _password,
-      firstName: _firstName,
-      lastName: _lastName
+        username: _username,
+        password: _password,
+        firstName: _firstName,
+        lastName: _lastName
     };
+    
     $.ajax({
         url: '/api/users',
         data: JSON.stringify(user),
@@ -89,20 +90,20 @@ function signUpUser(_username, _password, _firstName, _lastName) {
 
 // -------------START OF FUNCTIONS FOR SEASON PAGES-----------------
 
-// ON SUBMITAL OF NEW PLANT
-function onSubmit() {
-  $('.js-enter-form').on('submit', function(event) {
-    event.preventDefault();
-    $('.js-event-results').html("");
-  // Userid:
-//   "Seed or Plant:" radio button,
-	var season = $('.js-season').val();
-    var produceName = $('.js-produce-name').val();
-    var germinateIndoors = $(this).find('#checkbox').prop('checked');
-    var seedOrPlant = $('')
-    var plantBy = $('#plantByQuery').val();
-    var datePlanted = $('#datePlantedQuery').val();
- // run another function?
-  });
-}
+// // ON SUBMITAL OF NEW PLANT
+// function onSubmit() {
+//   $('.js-enter-form').on('submit', function(event) {
+//     event.preventDefault();
+//     $('.js-event-results').html("");
+//   // Userid:
+// //   "Seed or Plant:" radio button,
+// 	var season = $('.js-season').val();
+//     var produceName = $('.js-produce-name').val();
+//     var germinateIndoors = $(this).find('#checkbox').prop('checked');
+//     var seedOrPlant = $('')
+//     var plantBy = $('#plantByQuery').val();
+//     var datePlanted = $('#datePlantedQuery').val();
+//  // run another function?
+//   });
+// }
 

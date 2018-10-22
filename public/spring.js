@@ -63,10 +63,13 @@ return `
 function getSpringData(displayProduce) {
     
     $.ajax({
-    	url: '/spring/ + username',
+    	url: `/spring`,
     	contentType: 'application/json',
         dataType: 'json',
-        method: 'GET'  	
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer' + token
+        }
     })
     .done(function(results) {
  		console.log("success");
@@ -93,7 +96,7 @@ function displaySpringProduce(data) {
     };
 };
 
-// STILL NEED TO ADD EDIT/DELETE ICONS EITHER TO WHOLE DIV OR INDIVIDUAL P DATA AND CREATE EVENT LISTENERS FOR THEM
+// STILL NEED TO ADD EDIT/DELETE ICON TO WHOLE DIV CREATE EVENT LISTENERS FOR IT
 function generateSpringProduce(data) {
 	   $('.userData.spring').append(
            ` <div class="indiv-produce">

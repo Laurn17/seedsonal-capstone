@@ -46,25 +46,25 @@ button {
 }
 
 #logo {
-	 height: 50px;
-	 padding-top: 20px;
-	 padding-bottom: 20px;
-	 margin-left: 20px;
-	 margin-top: 0;
-	 float: left;
+	height: 50px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-left: 20px;
+	margin-top: 0;
+	float: left;
 
 }
 
 .main-nav {
-	 float: right;
-	 padding: 10px;
-	 margin: 20px 10px ;
+	float: right;
+	padding: 10px;
+	margin: 20px 10px ;
 }
 
 .main-nav li {
-	 margin: 15px 2px;
-	 float: left;
-	 display: inline-block;
+	margin: 15px 2px;
+	float: left;
+	display: inline-block;
 }
 
 .home-page-content {

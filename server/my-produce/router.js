@@ -16,14 +16,16 @@ const jwtAuth = passport.authenticate('jwt', {session: false});
 router.use(bodyParser.json());
 
 // should i be getting each season by username??
-router.get('/spring/:username', jsonParser, jwtAuth (req, res) => {
-  Produce
-    .find({username: req.params.username})
+router.get('/spring', jwtAuth, (req, res) => {
+  return Produce
+    .find({user: req.user.id})
     .then(function(produce) {
-      res.json(produce.map(produce => produce.serialize()));
+     	res.json(produce.map(produce => produce.serialize()));
     })
     .catch(function(err) {
-      console.error(err);
-      res.status(500).json({ error: 'something went terribly wrong' });
+     	console.error(err);
+     	res.status(500).json({ error: 'something went terribly wrong' });
     });
 });
+
+module.exports = {router};
