@@ -8,7 +8,7 @@ const passport = require('passport');
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/seedsonal-capstone");
+mongoose.connect("mongodb://localhost:8080/seedsonal-capstone");
 
 const { DATABASE_URL, PORT } = require('./config');
 
@@ -19,7 +19,7 @@ app.use(express.static("public"));
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 const { router: myProduceRouter} = require('./server/my-produce');
-// IS LINE 21 RIGHT?
+
 
 // CORS FUNCTION
 app.use(function (req, res, next) {
@@ -32,14 +32,13 @@ app.use(function (req, res, next) {
   next();
 });
 
-
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
-app.use('/server/my-produce/', myProduceRouter);
-// IS LINE 41 RIGHT?
+app.use(myProduceRouter);
+
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 

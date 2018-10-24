@@ -1,20 +1,20 @@
 function sendToHomePage() {
     $('.container').remove();
     $('.home-page').html(homePageContent);
-    watchSpringClick() 
+    watchSeasonClick();
 };
 
 function homePageContent() {
     return `
         <header role="banner" id="sticky-header">
-            <a id="logo" href="home.js"><h1>this will be a logo(leaf icon?) top left</h1>
+            <a id="logo" href="home.js"><img src="https://st2.depositphotos.com/8257864/11152/v/950/depositphotos_111524438-stock-illustration-sprout-cute-icon-vector-tree.jpg" height="40" width="auto">
             </a>
                 <nav role="navigation">
                     <ul class = "main-nav">
-                        <li class = "click spring">Spring |</li>
-                        <li class = "click summer">Summer |</li>
-                        <li class = "click autumn">Autumn |</li>
-                        <li class = "click winter">Winter</li>
+                        <li class = "spring">Spring |</li>
+                        <li class = "summer">Summer |</li>
+                        <li class = "autumn">Autumn |</li>
+                        <li class = "winter">Winter</li>
                     </ul>
                 </nav>
         </header>
@@ -47,10 +47,13 @@ function homePageContent() {
         </div> `;
 };
 
-function watchSpringClick() {
-    $('.main-nav li').on('click', function(event) {
+function watchSeasonClick() {
+    $('.main-nav').on('click', 'li', function(event) {
+        event.preventDefault();
         $('.home-page-content').remove();
-        getSpringData();
-        $('.by-season-content').html(springContent);
+        const season = $(this).attr("class");
+        getSeasonData(season);
+        // generateCommonProduce(season);
+        $('.by-season-content').html(seasonContent(season));
     });
 };

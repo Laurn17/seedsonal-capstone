@@ -16,9 +16,9 @@ const jwtAuth = passport.authenticate('jwt', {session: false});
 router.use(bodyParser.json());
 
 // should i be getting each season by username??
-router.get('/spring', jwtAuth, (req, res) => {
+router.get('/:season', jwtAuth, (req, res) => {
   return Produce
-    .find({user: req.user.id})
+    .find({username: req.params.username})
     .then(function(produce) {
      	res.json(produce.map(produce => produce.serialize()));
     })
@@ -26,6 +26,35 @@ router.get('/spring', jwtAuth, (req, res) => {
      	console.error(err);
      	res.status(500).json({ error: 'something went terribly wrong' });
     });
+});
+
+
+router.post('/:season', jsonParser, jwtAuth, (req, res) => {
+	const requiredFields = ['season', 'name', 'plantBy', 'username'];
+	for (let i = 0; i < requiredFields.length; i++) {
+		const field = requiredFields[i];
+		if (!(field in req.body)) {
+			const message = `Missing ${field} in request body`;
+			console.error(message);
+			return res.status(400).send(message);
+		}
+	}
+	Produce
+	    .create({
+	    	season: req.body.season,
+	    	name: req.body.name,
+	    	germinateIndoors: req.body.germinateIndoors,
+			seedOrPlant: req.body.seedOrPlant,
+			plantBy: req.body.plantBy,
+			datePlanted: req.body.datePlanted
+   		 })
+	    .then(function(produce) {
+	    	res.status(201).json(produce.serialize())
+	    })
+	    .catch(function(err) {
+	      console.error(err);
+	      res.status(500).json({ message: 'Internal server error' });
+	    });
 });
 
 module.exports = {router};

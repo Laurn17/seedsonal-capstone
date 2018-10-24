@@ -13,7 +13,6 @@ header a {
 }
 
 
-
 #login, #signUp {
 	text-align: center;
 	border: 1px solid black;
@@ -28,12 +27,11 @@ fieldset {
 }
 
 
-
 button {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 50px;
+	margin-top: 20px;
 }
 
 /*HOME PAGE CSS*/
@@ -46,7 +44,7 @@ button {
 }
 
 #logo {
-	height: 50px;
+	border-radius: 50%;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	margin-left: 20px;
@@ -70,3 +68,38 @@ button {
 .home-page-content {
 	padding-top: 100px;
 }
+
+/*SEASONS PAGES CSS*/
+.iconAndForm {
+	float: right;
+}
+
+.new-Item {
+	position: absolute;
+	right: 40px;
+	bottom: 65px;
+	clear: both;
+	border: 1px solid black;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#add-item-icon {
+	position: absolute;
+	padding: 10px 12px;
+	border-radius: 50%;
+	border: 1px solid black;
+	width: 40px;
+	height: auto;
+	color: white;
+	background-color: green;
+	right: 15px;
+	bottom: 15px;
+	-webkit-transition: -webkit-transform .6s ease-in-out;
+    transition: transform .6s ease-in-out;
+}
+
+#add-item-icon:hover {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
