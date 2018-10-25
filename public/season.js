@@ -213,7 +213,7 @@ function deleteProduceItem(_id) {
 	// const season = ObjectId.season;
 
  	$.ajax({
-    	url: `/${_id}/`,
+    	url: `/${_id}`,
     	contentType: 'application/json',
         dataType: 'json',
         method: 'DELETE',
