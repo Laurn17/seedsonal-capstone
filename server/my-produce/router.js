@@ -18,7 +18,7 @@ router.use(bodyParser.json());
 // should i be getting each season by username??
 router.get('/:season', jwtAuth, (req, res) => {
   return Produce
-    .find({username: req.params.username})
+    .find({username: req.params.username, season: req.params.season})
     .then(function(produce) {
      	res.json(produce.map(produce => produce.serialize()));
     })
@@ -29,7 +29,7 @@ router.get('/:season', jwtAuth, (req, res) => {
 });
 
 
-router.post('/:season', jsonParser, jwtAuth, (req, res) => {
+router.post('/:season', jwtAuth, (req, res) => {
 	const requiredFields = ['season', 'name', 'plantBy', 'username'];
 	for (let i = 0; i < requiredFields.length; i++) {
 		const field = requiredFields[i];

@@ -11,7 +11,7 @@ const produceSchema = mongoose.Schema({
 	seedOrPlant: {type: String, enum: ['Seed', 'Plant']},
 	plantBy: {type: Date, required: true},
 	datePlanted: {type: Date},
-	user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+	username: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 
@@ -23,7 +23,7 @@ produceSchema.methods.serialize = function() {
     germinateIndoors: this.germinateIndoors,
     seedOrPlant: this.seedorPlant,
     plantBy: this.plantBy.toDateString(),
-    datePlanted: this.datePlanted.toDateString()
+    datePlanted: this.datePlanted && this.datePlanted.toDateString()
   };
 };
 

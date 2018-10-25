@@ -13,7 +13,7 @@ return `
 
 		<div class="iconAndForm">
 		<div class="new-Item" hidden>
-		<form id="newItemForm" role="login" action="/server/my-produce/season" method ="post">
+		<form id="newItemForm" role="login" method ="post">
 			<fieldset>
 		    	<legend></legend>
 
@@ -28,10 +28,10 @@ return `
 		    	<br>
 
 		    	<p>Grow From A:</p>
-		    	<input type="radio" id="seedOrPlant" name="seedOrPlant">
-		    	<label for="seedOrPlant">Seed</label>
-		    	<input type="radio" id="seedOrplant" name="seedOrPlant">
-		   	 	<label for="seedOrPlant">Plant</label><br/>
+		    	<input type="radio" id="seed" name="seedOrPlant" value="seed">
+		    	<label for="seed">Seed</label>
+		    	<input type="radio" id="plant" name="seedOrPlant" value="plant">
+		   	 	<label for="plant">Plant</label><br/>
 
 		   	 	<label for="plantBy">Plant By:</label>
 		    	<input type="date" id="plantBy">
@@ -98,32 +98,49 @@ function displaySeasonProduce(data) {
 };
 
 // ---- STILL NEED TO ADD EDIT/DELETE ICON TO WHOLE DIV CREATE EVENT LISTENERS FOR IT
+function displayProduceTitle() {
+	return ` <h2 id="excited">I'm excited to grow:</h2>`
+};
+
 function generateSeasonProduce(data) {
+	   $('.userData.season').html(displayProduceTitle);
 	   $('.userData.season').append(
            ` <div class="indiv-produce">
-                <h2 data="${data.id}">${data.name} &#9660;</h2> 
-
-                // THE BELOW SECTION WILL BE SHOWN WHEN A DROP-DOWN TRIANGLE IS HIT
-                <div class="${data.name}" id="${data.id}" hidden>
-                    <h3>Name:</h3>
-                        <p>${data.name}</p>
-                    <h3>Germinate Indoors:</h3> 
-                        <p>${data.germinateIndoors}</p> 
-                    <h3>Seed or Plant</h3>
-                        <P>${data.seedorPlant}</p>
-                    <h3>Plant By:</h3>
-                        <p>${data.plantBy}</p>
-                    <h3>Date Planted:</h3>
-                        <p>${datePlanted}</p>
+                <h3 data="${data.id}">${data.name} 
+                	<div id="arrow">&#9660;</div>
+                </h3>
+                <hr hidden>
+                <div class="moreInfo" id="${data.id}" hidden>
+                	
+                    <h4>Germinate Indoors:</h4> 
+                        <span>${data.germinateIndoors}</span>
+                        <br>
+                    <h4>Seed or Plant:</h3>
+                        <span>${data.seedorPlant}</span>
+                        <br>
+                    <h4>Plant By:</h4>
+                        <span>${data.plantBy}</span>
+                        <br>
+                    <h4>Date Planted:</h4>
+                        <span>${datePlanted}</span>
                 </div>
             </div>`);
+	   onArrowClick();
+};
+
+function onArrowClick() {
+	$('#arrow').on('click', function(event) {
+		event.preventDefault();
+		$('.moreInfo').toggle("slide");
+		$('hr').toggle();
+	});
 };
 
 // --------------- FUNCTIONS FOR ADDING A NEW PRODUCE ITEM --------------
 function onAddItemClick() {
 	$('div').on('click', '#add-item-icon', function(event) {
-		// event.preventDefault();
-		$('.new-Item').prop('hidden', false);
+		event.preventDefault();
+		$('.new-Item').toggle();
 	});
 	onSubmitItemClick();
 }
@@ -137,11 +154,12 @@ function onSubmitItemClick() {
 		 		username: username,
 		 		season: $('#season').val(),
 		 		name: $('#name').val(),
-		 		germinateIndoors:  $('#germinateIndoors').val(),
+		 		germinateIndoors: $('#germinateIndoors').prop("checked"),
 		 		seedOrPlant: $('#seedOrplant').val(),
 		 		plantBy: new Date($('#plantBy').val()),
 		 		datePlanted: new Date($('#datePlanted').val())
 		 	};
+
 
 		$('#name').val('');
         $('#germinateIndoors').val('');
@@ -153,24 +171,25 @@ function onSubmitItemClick() {
 	});
 }
 
-function postNewProduce(season) {
-	const season = $(this).attr("class");
-	
+function postNewProduce(newProduce) {
+
  	 $.ajax({
-    	url: `/${season}`,
+    	url: `/${newProduce.season}`,
     	contentType: 'application/json',
         dataType: 'json',
         method: 'POST',
         headers: {
             'Authorization': 'Bearer ' + token
-        }
+        },
+         data: JSON.stringify(newProduce)
     })
     .done(function(results) {
  		console.log("success");
- 		getSeasonData(season);
+ 		getSeasonData(newProduce.season);
     })
     .fail(function(err) {
-        console.error('Error: ${err.message}');
+        console.error(err);
     });
 };
 
+// ------------------------------------------------------

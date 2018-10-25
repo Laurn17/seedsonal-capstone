@@ -103,3 +103,32 @@ button {
     transform: rotate(360deg);
 }
 
+/*SEASONS PAGE PRODUCE LIST CSS*/
+
+.userData.season {
+	float: right;
+	margin-top: 70px;
+	margin-right: 50px;
+}
+
+#excited {
+	text-align: center;
+}
+
+.indiv-produce {
+	border: 1px solid black;
+	padding: 0px 7px;
+	background-color: lightgreen;
+}
+
+#arrow {
+	display: inline;
+}
+
+hr {
+	width: 100%;
+}
+
+.moreInfo h4 {
+	display: inline-block;
+}
