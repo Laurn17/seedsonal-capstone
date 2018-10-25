@@ -208,7 +208,9 @@ function onDeleteItemClick() {
 };
 
 function deleteProduceItem(_id) {
-	const season = ObjectId.season;
+	// Do I need to target a season to delete something?
+	// how do i get the season from having the produce id?
+	// const season = ObjectId.season;
 
  	$.ajax({
     	url: `/${season}/` + _id,
