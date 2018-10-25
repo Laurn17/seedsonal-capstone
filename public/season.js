@@ -105,9 +105,11 @@ function displayProduceTitle() {
 function generateSeasonProduce(data) {
 	   $('.userData.season').html(displayProduceTitle);
 	   $('.userData.season').append(
-           ` <div class="indiv-produce">
+           ` <div id="${data.id}" class="indiv-produce">
                 <h3 data="${data.id}">${data.name} 
                 	<div id="arrow">&#9660;</div>
+                	<div id="edit">&#9998</div>
+                	<div id="delete">&#10062</div>
                 </h3>
                 <hr hidden>
                 <div class="moreInfo" id="${data.id}" hidden>
@@ -126,6 +128,7 @@ function generateSeasonProduce(data) {
                 </div>
             </div>`);
 	   onArrowClick();
+	   onDeleteItemClick();
 };
 
 function onArrowClick() {
@@ -192,4 +195,35 @@ function postNewProduce(newProduce) {
     });
 };
 
-// ------------------------------------------------------
+// -------------- FUNCTIONS TO DELETE A PRODUCE ITEM -----------
+
+function onDeleteItemClick() {
+	$('#delete').on('click', function(event) {
+		event.preventDefault();
+		alert("Are you sure you want to delete this item?");
+		const target = $(this).parents('.indiv-produce').attr("id");
+		deleteProduceItem(target);
+		console.log(target.season)
+	});
+};
+
+function deleteProduceItem(_id) {
+	const season = ObjectId.season;
+
+ 	$.ajax({
+    	url: `/${season}/` + _id,
+    	contentType: 'application/json',
+        dataType: 'json',
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
+    .done(function() {
+ 		console.log("item deleted");
+ 		getSeasonData();
+    })
+    .fail(function(err) {
+        console.error(err);
+    });
+};

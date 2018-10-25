@@ -118,15 +118,16 @@ button {
 .indiv-produce {
 	border: 1px solid black;
 	padding: 0px 7px;
-	background-color: lightgreen;
+	background-color: lightblue;
 }
 
-#arrow {
+#arrow, #edit, #delete {
 	display: inline;
 }
 
 hr {
 	width: 100%;
+	color: white;
 }
 
 .moreInfo h4 {

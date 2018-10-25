@@ -15,7 +15,7 @@ const jwtAuth = passport.authenticate('jwt', {session: false});
 
 router.use(bodyParser.json());
 
-// should i be getting each season by username??
+
 router.get('/:season', jwtAuth, (req, res) => {
   return Produce
     .find({username: req.params.username, season: req.params.season})
@@ -55,6 +55,18 @@ router.post('/:season', jwtAuth, (req, res) => {
 	      console.error(err);
 	      res.status(500).json({ message: 'Internal server error' });
 	    });
+});
+
+// DELETE
+router.delete('/:season/:id', jwtAuth, (req, res) => {
+	Produce
+		.findByIdAndRemove(req.params.id)
+		.then(() => {
+			res.status(204).end();
+		})
+		.catch(function(err) {
+			res.status(500).json({error: 'Internal server error'});
+		});	
 });
 
 module.exports = {router};
