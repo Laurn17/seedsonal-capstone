@@ -58,7 +58,7 @@ router.post('/:season', jwtAuth, (req, res) => {
 });
 
 // DELETE
-router.delete('/:season/:id', jwtAuth, (req, res) => {
+router.delete('/:id', jwtAuth, (req, res) => {
 	Produce
 		.findByIdAndRemove(req.params.id)
 		.then(() => {

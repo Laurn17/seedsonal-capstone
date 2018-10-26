@@ -82,7 +82,6 @@ function getSeasonData(season) {
 
 function displaySeasonProduce(data) {
     $('.userData.season').html('');
-    onAddItemClick();
     if (data.length === 0) {
         $('.userData.season').html(
             `<div class="noProduceMessage">
@@ -91,11 +90,15 @@ function displaySeasonProduce(data) {
             </div>`
             )}
     else {
+    	$('.userData.season').html(displayProduceTitle);
         for (let i = 0; i < data.length; i++) {
             generateSeasonProduce(data[i]);
         };
+        onArrowClick();
+	    onDeleteItemClick();
     };
 };
+
 
 // ---- STILL NEED TO ADD EDIT/DELETE ICON TO WHOLE DIV CREATE EVENT LISTENERS FOR IT
 function displayProduceTitle() {
@@ -103,13 +106,13 @@ function displayProduceTitle() {
 };
 
 function generateSeasonProduce(data) {
-	   $('.userData.season').html(displayProduceTitle);
+
 	   $('.userData.season').append(
            ` <div id="${data.id}" class="indiv-produce">
                 <h3 data="${data.id}">${data.name} 
-                	<div id="arrow">&#9660;</div>
-                	<div id="edit">&#9998</div>
-                	<div id="delete">&#10062</div>
+                	<button class="arrow">&#9660;</button>
+                	<button class="edit">&#9998</button>
+                	<button class="delete">&#10062 </button>
                 </h3>
                 <hr hidden>
                 <div class="moreInfo" id="${data.id}" hidden>
@@ -124,35 +127,35 @@ function generateSeasonProduce(data) {
                         <span>${data.plantBy}</span>
                         <br>
                     <h4>Date Planted:</h4>
-                        <span>${datePlanted}</span>
+                        <span>${data.datePlanted}</span>
                 </div>
             </div>`);
-	   onArrowClick();
-	   onDeleteItemClick();
 };
 
 function onArrowClick() {
-	$('#arrow').on('click', function(event) {
+	$('.arrow').on('click', function(event) {
 		event.preventDefault();
-		$('.moreInfo').toggle("slide");
+		const plant = $(this).parents(".indiv-produce").find(".moreInfo");
+		plant.toggle();
 		$('hr').toggle();
 	});
 };
 
 // --------------- FUNCTIONS FOR ADDING A NEW PRODUCE ITEM --------------
 function onAddItemClick() {
-	$('div').on('click', '#add-item-icon', function(event) {
+	$(document.body).on('click', '#add-item-icon', function(event) {
 		event.preventDefault();
 		$('.new-Item').toggle();
 	});
-	onSubmitItemClick();
+	
 }
 
 function onSubmitItemClick() {
 	$('#newItemForm').on('submit', function(event) {
 		event.preventDefault();
-		$('.new-Item').prop('hidden', true);
-		 	
+		$('.new-Item').toggle();
+
+
 		 	const newProduce = {
 		 		username: username,
 		 		season: $('#season').val(),
@@ -160,7 +163,7 @@ function onSubmitItemClick() {
 		 		germinateIndoors: $('#germinateIndoors').prop("checked"),
 		 		seedOrPlant: $('#seedOrplant').val(),
 		 		plantBy: new Date($('#plantBy').val()),
-		 		datePlanted: new Date($('#datePlanted').val())
+		 		datePlanted: $('#datePlanted').val()
 		 	};
 
 
@@ -169,7 +172,7 @@ function onSubmitItemClick() {
         $('#seedOrplant').val('');
         $('#plantBy').val('');
         
-        $('#add-plant-form').prop('hidden', true);
+        // $('#add-plant-form').prop('hidden', true);
         postNewProduce(newProduce);
 	});
 }
@@ -198,22 +201,18 @@ function postNewProduce(newProduce) {
 // -------------- FUNCTIONS TO DELETE A PRODUCE ITEM -----------
 
 function onDeleteItemClick() {
-	$('#delete').on('click', function(event) {
+	$('.delete').on('click', function(event) {
 		event.preventDefault();
 		alert("Are you sure you want to delete this item?");
 		const target = $(this).parents('.indiv-produce').attr("id");
 		deleteProduceItem(target);
-		console.log(target.season)
 	});
 };
 
 function deleteProduceItem(_id) {
-	// Do I need to target a season to delete something?
-	// how do i get the season from having the produce id?
-	// const season = ObjectId.season;
 
  	$.ajax({
-    	url: `/${season}/` + _id,
+    	url: `/${_id}/`,
     	contentType: 'application/json',
         dataType: 'json',
         method: 'DELETE',
@@ -229,3 +228,41 @@ function deleteProduceItem(_id) {
         console.error(err);
     });
 };
+
+// -------------- FUNCTIONS TO EDIT A PRODUCE ITEM -----------
+
+// function onEditItemClick() {
+// 	$('#edit').on('click', function(event) {
+// 		event.preventDefault();
+// 		const target = $(this).parents('.indiv-produce').attr("id");
+// 		onEditProduceSave();
+// 	});
+// };
+
+// function onEditProduceSave() {
+
+// };
+
+// function onEditProduceS(season, _id) {
+ // 	var editedProduce = new Object();  
+ //        person.name = "Sourav";  
+ //        person.surname = "Kayal";  
+
+//  	$.ajax({
+//     	url: `/${season}/${_id}/`,
+//     	contentType: 'application/json',
+//         dataType: 'json',
+//         method: 'PUT',
+		// data: ??
+//         headers: {
+//             'Authorization': 'Bearer ' + token
+//         }
+//     })
+//     .done(function() {
+//  		console.log("item deleted");
+//  		getSeasonData();
+//     })
+//     .fail(function(err) {
+//         console.error(err);
+//     });
+// };

@@ -55,5 +55,7 @@ function watchSeasonClick() {
         getSeasonData(season);
         // generateCommonProduce(season);
         $('.by-season-content').html(seasonContent(season));
+        onAddItemClick();
+        onSubmitItemClick();
     });
 };
