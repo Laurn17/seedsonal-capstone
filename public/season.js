@@ -1,6 +1,7 @@
 const token = localStorage.getItem('authToken');
 const username = localStorage.getItem('username');
 
+
 function seasonContent(season) {
 return `
 	<main role="main">
@@ -96,6 +97,7 @@ function displaySeasonProduce(data) {
         };
         onArrowClick();
 	    onDeleteItemClick();
+	    onEditItemClick(data.season);
     };
 };
 
@@ -137,7 +139,8 @@ function onArrowClick() {
 		event.preventDefault();
 		const plant = $(this).parents(".indiv-produce").find(".moreInfo");
 		plant.toggle();
-		$('hr').toggle();
+		const lineBreak = $(this).parents(".indiv-produce").find("hr");
+		lineBreak.toggle();
 	});
 };
 
@@ -172,7 +175,6 @@ function onSubmitItemClick() {
         $('#seedOrplant').val('');
         $('#plantBy').val('');
         
-        // $('#add-plant-form').prop('hidden', true);
         postNewProduce(newProduce);
 	});
 }
@@ -203,7 +205,7 @@ function postNewProduce(newProduce) {
 function onDeleteItemClick() {
 	$('.delete').on('click', function(event) {
 		event.preventDefault();
-		alert("Are you sure you want to delete this item?");
+		alert("This item will be deleted forever");
 		const target = $(this).parents('.indiv-produce').attr("id");
 		deleteProduceItem(target);
 	});
@@ -220,9 +222,10 @@ function deleteProduceItem(_id) {
             'Authorization': 'Bearer ' + token
         }
     })
-    .done(function() {
+    .done(function(d) {
  		console.log("item deleted");
- 		getSeasonData();
+ 		// HOW DO I GET SEASON TO PASS TO IT?!?!?!?
+ 		getSeasonData(_id.season);
     })
     .fail(function(err) {
         console.error(err);
@@ -231,19 +234,20 @@ function deleteProduceItem(_id) {
 
 // -------------- FUNCTIONS TO EDIT A PRODUCE ITEM -----------
 
-// function onEditItemClick() {
-// 	$('#edit').on('click', function(event) {
-// 		event.preventDefault();
-// 		const target = $(this).parents('.indiv-produce').attr("id");
-// 		onEditProduceSave();
-// 	});
-// };
+function onEditItemClick() {
+	$('.edit').on('click', function(event) {
+		event.preventDefault();
+		const plant = $(this).parents(".indiv-produce").find(".moreInfo");
+		plant.toggle();
+		// onEditProduceSave(target);
+	});
+};
 
 // function onEditProduceSave() {
 
 // };
 
-// function onEditProduceS(season, _id) {
+// function putEditProduce(season, _id) {
  // 	var editedProduce = new Object();  
  //        person.name = "Sourav";  
  //        person.surname = "Kayal";  

@@ -119,6 +119,7 @@ button {
 .indiv-produce {
 	border: 1px solid black;
 	padding: 0px 7px;
+	margin: 10px;
 	background-color: lightblue;
 }
 

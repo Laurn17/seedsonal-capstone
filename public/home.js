@@ -57,5 +57,6 @@ function watchSeasonClick() {
         $('.by-season-content').html(seasonContent(season));
         onAddItemClick();
         onSubmitItemClick();
+        
     });
 };
