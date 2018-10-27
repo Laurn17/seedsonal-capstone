@@ -5,6 +5,7 @@ const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
+var _ = require('lodash');  
 
 
 mongoose.Promise = global.Promise;

@@ -1,6 +1,6 @@
 const token = localStorage.getItem('authToken');
 const username = localStorage.getItem('username');
-
+const currentSeason = localStorage.getItem('season');
 
 function seasonContent(season) {
 return `
@@ -73,7 +73,7 @@ function getSeasonData(season) {
         }
     })
     .done(function(results) {
- 		console.log("success");
+ 		console.log("Getting Produce Data");
  		displaySeasonProduce(results);
     })
     .fail(function(err) {
@@ -94,10 +94,12 @@ function displaySeasonProduce(data) {
     	$('.userData.season').html(displayProduceTitle);
         for (let i = 0; i < data.length; i++) {
             generateSeasonProduce(data[i]);
+
         };
         onArrowClick();
-	    onDeleteItemClick();
-	    onEditItemClick(data.season);
+	    onEditItemClick();
+	    onDeleteItemClick(data);
+
     };
 };
 
@@ -108,7 +110,7 @@ function displayProduceTitle() {
 };
 
 function generateSeasonProduce(data) {
-
+	console.log("Displayed Season Produce");
 	   $('.userData.season').append(
            ` <div id="${data.id}" class="indiv-produce">
                 <h3 data="${data.id}">${data.name} 
@@ -146,18 +148,17 @@ function onArrowClick() {
 
 // --------------- FUNCTIONS FOR ADDING A NEW PRODUCE ITEM --------------
 function onAddItemClick() {
-	$(document.body).on('click', '#add-item-icon', function(event) {
+	$('.iconAndForm').on('click', '#add-item-icon', function(event) {
 		event.preventDefault();
 		$('.new-Item').toggle();
 	});
-	
 }
 
 function onSubmitItemClick() {
 	$('#newItemForm').on('submit', function(event) {
+		console.log("Submitted a New Item");
 		event.preventDefault();
 		$('.new-Item').toggle();
-
 
 		 	const newProduce = {
 		 		username: username,
@@ -168,8 +169,6 @@ function onSubmitItemClick() {
 		 		plantBy: new Date($('#plantBy').val()),
 		 		datePlanted: $('#datePlanted').val()
 		 	};
-
-
 		$('#name').val('');
         $('#germinateIndoors').val('');
         $('#seedOrplant').val('');
@@ -192,7 +191,7 @@ function postNewProduce(newProduce) {
          data: JSON.stringify(newProduce)
     })
     .done(function(results) {
- 		console.log("success");
+ 		console.log("Created a New Item");
  		getSeasonData(newProduce.season);
     })
     .fail(function(err) {
@@ -202,7 +201,7 @@ function postNewProduce(newProduce) {
 
 // -------------- FUNCTIONS TO DELETE A PRODUCE ITEM -----------
 
-function onDeleteItemClick() {
+function onDeleteItemClick(season) {
 	$('.delete').on('click', function(event) {
 		event.preventDefault();
 		alert("This item will be deleted forever");
@@ -222,16 +221,14 @@ function deleteProduceItem(_id) {
             'Authorization': 'Bearer ' + token
         }
     })
-    .done(function(d) {
- 		console.log("item deleted");
- 		// HOW DO I GET SEASON TO PASS TO IT?!?!?!?
- 		getSeasonData(_id.season);
+    .done(function() {
+    	console.log("Deleted An Item");
+    	getSeasonData(season);
     })
     .fail(function(err) {
         console.error(err);
     });
 };
-
 // -------------- FUNCTIONS TO EDIT A PRODUCE ITEM -----------
 
 function onEditItemClick() {

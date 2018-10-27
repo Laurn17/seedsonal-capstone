@@ -12,10 +12,11 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 const passport = require('passport');
 const jwtAuth = passport.authenticate('jwt', {session: false});
+var _ = require('lodash');  
 
 router.use(bodyParser.json());
 
-
+// GET BY SEASON
 router.get('/:season', jwtAuth, (req, res) => {
   return Produce
     .find({username: req.params.username, season: req.params.season})
@@ -28,7 +29,20 @@ router.get('/:season', jwtAuth, (req, res) => {
     });
 });
 
+// GET BY ITEM ID
+router.get('/:id', jwtAuth, (req, res) => {
+  return Produce
+    .find({username: req.params.username, ObjectId: req.params._id})
+    .then(function(produce) {
+     	res.json(produce.map(produce => produce.serialize()));
+    })
+    .catch(function(err) {
+     	console.error(err);
+     	res.status(500).json({ error: 'something went terribly wrong' });
+    });
+});
 
+// CREATE BY SEASON
 router.post('/:season', jwtAuth, (req, res) => {
 	const requiredFields = ['season', 'name', 'plantBy', 'username'];
 	for (let i = 0; i < requiredFields.length; i++) {

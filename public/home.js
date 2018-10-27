@@ -1,3 +1,6 @@
+let season;
+
+
 function sendToHomePage() {
     $('.container').remove();
     $('.home-page').html(homePageContent);
@@ -51,12 +54,13 @@ function watchSeasonClick() {
     $('.main-nav').on('click', 'li', function(event) {
         event.preventDefault();
         $('.home-page-content').remove();
-        const season = $(this).attr("class");
+        season = $(this).attr("class");
         getSeasonData(season);
-        // generateCommonProduce(season);
         $('.by-season-content').html(seasonContent(season));
         onAddItemClick();
         onSubmitItemClick();
-        
+
     });
 };
+
+

@@ -19,6 +19,7 @@ const produceSchema = mongoose.Schema({
 produceSchema.methods.serialize = function() {
   return {
     id: this._id,
+    season: this.season,
     name: this.name,
     germinateIndoors: this.germinateIndoors,
     seedOrPlant: this.seedorPlant,
