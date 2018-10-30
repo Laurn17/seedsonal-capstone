@@ -7,10 +7,16 @@ function sendToHomePage() {
     watchSeasonClick();
 };
 
+function watchLogoClick() {
+    $('header').on("click", "#logo", function() {
+        sendToHomePage();
+    });
+};
+
 function homePageContent() {
     return `
         <header role="banner" id="sticky-header">
-            <a id="logo" href="home.js"><img src="images/leaf-logo.png" height="60" width="auto">
+            <a id="logo" href="#"><img src="images/leaf-logo.png" height="60" width="auto">
             </a>
                 <nav role="navigation">
                     <ul class = "main-nav">

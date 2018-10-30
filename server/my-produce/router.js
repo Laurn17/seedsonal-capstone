@@ -83,4 +83,26 @@ router.delete('/:id', jwtAuth, (req, res) => {
 		});	
 });
 
+// PUT
+router.put('/:id', jwtAuth, (req, res) =>  {
+	if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+		return res.status(400).json({error: 'Request path id and request body id must match'
+		});
+	}
+	const toUpdate = {};
+	const updateableFields = ['germinateIndoors', 'seedOrPlant', 'plantBy', 'datePlanted'];
+  	
+  	updateableFields.forEach(field => {
+	    if (field in req.body) {
+	      toUpdate[field] = req.body[field];
+	    }
+ 	});
+  	
+  	Produce
+  	    .findByIdAndUpdate(req.params.id, { $set: toUpdate })
+	    .then(produce => res.status(204).end())
+	    .catch(err => res.status(500).json({ message: 'Internal server error' }));
+});
+
+
 module.exports = {router};

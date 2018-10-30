@@ -99,6 +99,7 @@ function displaySeasonProduce(data) {
         onArrowClick();
 	    onEditItemClick();
 	    onDeleteItemClick(data);
+	    watchLogoClick();
 
     };
 };
@@ -229,7 +230,7 @@ function postNewProduce(newProduce) {
         headers: {
             'Authorization': 'Bearer ' + token
         },
-         data: JSON.stringify(newProduce)
+        data: JSON.stringify(newProduce)
     })
     .done(function(results) {
  		console.log("Created a New Item");
@@ -284,44 +285,48 @@ $('.indiv-produce').on('click', '.edit', function(event) {
 };
 
 function editSubmit(data) {
-	$('.indiv-produce').on('click', '.germinate-edit', function(event) {
+	$('.indiv-produce').on('submit', '.germinate-edit', function(event) {
 		event.preventDefault();
 		const produceId = event.target.closest('div').id;
 		const formTarget = event.target.closest('li').className;
 		const updateInfo = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').prop("checked");
+		
 		const newProduceInfo = {
 			id: produceId,
 			germinateIndoors: updateInfo
 		};
 		putEditProduce(produceId, newProduceInfo);
 	});
-	$('.indiv-produce').on('click', '.seedorplant-edit', function(event) {
+	$('.indiv-produce').on('submit', '.seedorplant-edit', function(event) {
 		event.preventDefault();
 		const produceId = event.target.closest('div').id;
 		const formTarget = event.target.closest('li').className;
 		const updateInfo = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').val() || $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').prop("checked");
+		
 		const newProduceInfo = {
 			id: produceId,
 			seedOrPlant: updateInfo
 		};
 		putEditProduce(produceId, newProduceInfo);
 	});
-	$('.indiv-produce').on('click', '.plantBy-edit', function(event) {
+	$('.indiv-produce').on('submit', '.plantBy-edit', function(event) {
 		event.preventDefault();
 		const produceId = event.target.closest('div').id;
 		const formTarget = event.target.closest('li').className;
 		const updateInfo = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').val();
+		
 		const newProduceInfo = {
 			id: produceId,
 			plantBy: updateInfo
 		};
 		putEditProduce(produceId, newProduceInfo);
 	});
-		$('.indiv-produce').on('click', '.datePlanted-edit', function(event) {
+		$('.indiv-produce').on('submit', '.datePlanted-edit', function(event) {
 		event.preventDefault();
 		const produceId = event.target.closest('div').id;
 		const formTarget = event.target.closest('li').className;
 		const updateInfo = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').val();
+		
 		const newProduceInfo = {
 			id: produceId,
 			datePlanted: updateInfo
@@ -334,27 +339,24 @@ function editSubmit(data) {
 
 // };
 
-// function putEditProduce(_id, newProduceInfo) {
- // 	var editedProduce = new Object();  
- //        person.name = "Sourav";  
- //        person.surname = "Kayal";  
+function putEditProduce(_id, newProduceInfo) {
 
-//  	$.ajax({
-//     	url: `/${season}/${_id}/`,
-//     	contentType: 'application/json',
-//         dataType: 'json',
-//         method: 'PUT',
-		// data: ??
-//         headers: {
-//             'Authorization': 'Bearer ' + token
-//         }
-//     })
-//     .done(function() {
-//  		console.log("item deleted");
-//  		getSeasonData();
-//     })
-//     .fail(function(err) {
-//         console.error(err);
-//     });
-// };
+ 	$.ajax({
+    	url: `/${_id}/`,
+    	contentType: 'application/json',
+        dataType: 'json',
+        method: 'PUT',
+		data: JSON.stringify(newProduceInfo),
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
+    .done(function(results) {
+ 		console.log("Item Updated");
+ 		getSeasonData(season);
+    })
+    .fail(function(err) {
+        console.error(err);
+    });
+};
 

@@ -105,7 +105,7 @@ fieldset legend {
 
 .home-page-content {
 	background-image: url("/images/cartooncloud4.jpg");
-	min-height: 640px;
+	min-height: 660px;
 	padding-top: 100px;
 }
 
@@ -150,7 +150,7 @@ fieldset legend {
 	margin: 0 19%;
 	padding: 17px;
   	border-radius: 20px;
-	background: rgba(255, 255, 255, 0.95);
+	background: rgba(255, 255, 255, 0.98);
 }
 #gardeningBlurb p {
     margin: 0 auto;
@@ -160,7 +160,7 @@ fieldset legend {
 #quotes {
   padding: 17px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.97);
   margin: 35px 45px;
   font-size: 18px;
 }
@@ -177,7 +177,7 @@ cite {
 .new-Item {
 	position: absolute;
 	right: 40px;
-	bottom: 65px;
+	bottom: 75px;
 	clear: both;
 	background-color: white;
 	border: 1px solid black;
@@ -212,11 +212,11 @@ cite {
 
 #add-item-icon {
 	position: fixed;
-	padding: 10px 12px;
+	padding: 16px 16px;
 	border-radius: 50%;
-	border: 2px solid #baf237;
-	width: 40px;
-	height: auto;
+	border: 2px solid #80b839;
+	width: 50px;
+	height: 50px;
 	color: white;
 	background-color: #60c934;
 	right: 20px;
