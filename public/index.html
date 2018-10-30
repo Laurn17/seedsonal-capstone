@@ -17,26 +17,29 @@
 	</div>
 
 	<div class= "container">
-	<header id="mainHeader" role="banner">
-		<a href="index.html">
-			<h1>seedsonal</h1>
-		</a>
-		<p>a superb way to remember what you want to plant and when</p>
-	</header>
-	
-	<main role="main">
-		<div class="login-messages">
-			<div id="signUp-success" hidden>
-				<p>User successfully registered.</p>
-			</div>
-			<div id="signUp-error" hidden>
-				<p> Something went wrong</p>
-			</div>
-			<div id="login-error" hidden>
-				<p>Incorrect Username or Password</p>
-			</div>
+		<div class="col-6">
+			<header id="mainHeader" role="banner">
+				<a href="index.html">
+					<h1>seedsonal</h1>
+				</a>
+				<p>a superb way to remember what you want to plant and when</p>
+			</header>
 		</div>
+	
+		<main role="main">
+			<div class="login-messages">
+				<div id="signUp-success" hidden>
+					<p>User successfully registered.</p>
+				</div>
+				<div id="signUp-error" hidden>
+					<p> Something went wrong</p>
+				</div>
+				<div id="login-error" hidden>
+					<p>Incorrect Username or Password</p>
+				</div>
+			</div>
 
+		<div class="col-6">
 		<div id="login">
 			<form role="login" action="/api/auth/login" id="login-form" method ="post">
 				<fieldset>
@@ -47,7 +50,7 @@
 						<label for="password">Password</label>
 						<br>
 						<input type="password" id="password" required>
-					<button type="submit">Login</button>
+					<button class="mainButtons" type="submit">Login</button>
 				</fieldset>
 			</form>
 
@@ -74,9 +77,10 @@
 							<br>
 							<input type="password" id="signUp-password" required>
 						
-						<button type="submit">Submit</button>
+						<button class="mainButtons" type="submit">Submit</button>
 					</fieldset>
 			</form>
+		</div>
 		</div>
 	</main>
 	</div>

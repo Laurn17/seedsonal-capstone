@@ -88,22 +88,5 @@ function signUpUser(_username, _password, _firstName, _lastName) {
 
 // ------------ END OF FUNCTIONS FOR MAIN BROWSER PAGE--------------
 
-// -------------START OF FUNCTIONS FOR SEASON PAGES-----------------
 
-// // ON SUBMITAL OF NEW PLANT
-// function onSubmit() {
-//   $('.js-enter-form').on('submit', function(event) {
-//     event.preventDefault();
-//     $('.js-event-results').html("");
-//   // Userid:
-// //   "Seed or Plant:" radio button,
-// 	var season = $('.js-season').val();
-//     var produceName = $('.js-produce-name').val();
-//     var germinateIndoors = $(this).find('#checkbox').prop('checked');
-//     var seedOrPlant = $('')
-//     var plantBy = $('#plantByQuery').val();
-//     var datePlanted = $('#datePlantedQuery').val();
-//  // run another function?
-//   });
-// }
 

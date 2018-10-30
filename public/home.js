@@ -10,14 +10,14 @@ function sendToHomePage() {
 function homePageContent() {
     return `
         <header role="banner" id="sticky-header">
-            <a id="logo" href="home.js"><img src="https://st2.depositphotos.com/8257864/11152/v/950/depositphotos_111524438-stock-illustration-sprout-cute-icon-vector-tree.jpg" height="40" width="auto">
+            <a id="logo" href="home.js"><img src="images/leaf-logo.png" height="60" width="auto">
             </a>
                 <nav role="navigation">
                     <ul class = "main-nav">
-                        <li class = "spring">Spring |</li>
-                        <li class = "summer">Summer |</li>
-                        <li class = "autumn">Autumn |</li>
-                        <li class = "winter">Winter</li>
+                        <li class = "spring">SPRING |</li>
+                        <li class = "summer">SUMMER |</li>
+                        <li class = "autumn">AUTUMN |</li>
+                        <li class = "winter">WINTER</li>
                     </ul>
                 </nav>
         </header>
@@ -27,24 +27,28 @@ function homePageContent() {
 
         <div class = "home-page-content">
         <main role="main">
-            
             <div id="gardeningBlurb">
-                <p> some long content to fill up this page </p>
+                <p> From a small seed, a mighty garden may grow </p>
             </div>
 
             <div id="quotes">
-                <blockquote cite="https://www.huxley.net/bnw/four.html">
-                    <p>Words can be like X-rays, if you use them properly – they'll go through anything. You read and you're pierced.</p>
+                <blockquote cite="https://www.brainyquote.com/authors/liberty_hyde_bailey">
+                    <p>"A garden requires patient labor and attention. Plants do not grow merely to satisfy ambitions or to fulfill good intentions. They thrive because someone expended effort on them."</p>
                 </blockquote>
-                    <cite>– Aldous Huxley, Brave New World</cite>
+                    <cite>– Liberty Hyde Bailey</cite>
                 <br>
                 <br>
-                <blockquote cite="https://www.huxley.net/bnw/four.html">
-                    <p>Words can be like X-rays, if you use them properly – they'll go through anything. You read and you're pierced.</p>
+                <blockquote cite="https://www.daviddomoney.com/35-inspirational-gardening-quotes-and-famous-proverbs/#.W9e4r2hKjIU">
+                    <p>"The glory of gardening: hands in the dirt, head in the sun, heart with nature. To nurture a garden is to feed not just on the body, but the soul."</p>
                 </blockquote>
-                    <cite>– Aldous Huxley, Brave New World</cite>
+                    <cite>– Alfred Austin</cite>
+                <br>
+                <br>
+                <blockquote cite="https://www.brainyquote.com/quotes/thomas_jefferson_157214?src=t_gardening">
+                    <p>"No occupation is so delightful to me as the culture of the earth, and no culture comparable to that of the garden."</p>
+                </blockquote>
+                    <cite>– Thomas Jefferson</cite>
             </div>
-
         </main>
         
         </div> `;

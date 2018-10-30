@@ -4,8 +4,53 @@
 	box-sizing: border-box;
 }
 
+body, html {
+	height: 100%;
+	margin: 0px;
+}
+
+.container {
+	background: #f8812f;
+	height: 100%;
+	width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container::before,
+.container::after {
+	display: table;
+    content: '';
+}
+
+.container::after {
+    clear: both;
+}
+
+.col-6 {
+	width: 50%;
+	float: left;
+	padding-left: 2%;
+    padding-right: 2%;
+}
+
 #mainHeader {
 	text-align: center;
+	margin-top: 100px;
+	padding-left: 65px
+}
+
+#mainHeader h1 {
+	font-size: 50px;
+	color: white;
+}
+
+#mainHeader p {
+	margin-top: 59px;
+	font-size: 22px;
+	color: white;
 }
 
 header a {
@@ -14,11 +59,14 @@ header a {
 
 
 #login, #signUp {
-	text-align: center;
-	border: 1px solid black;
-	margin: 0 auto;
-	background: rgb(204, 255, 204, 0.5);
-	width:	50%;
+	border: 1px solid #5fb839;
+	border-radius: 25px;
+	padding: 15px 15px;
+	margin-top: 100px;
+	background: white;
+	box-shadow: 0px 0px 20px .8px;
+	max-width: 400px;
+	color: #60c934;
 }
 
 fieldset {
@@ -26,37 +74,63 @@ fieldset {
 	display: block;
 }
 
+fieldset legend {
+	text-align: center;
+}
 
-button {
+#signUp-form input, #login-form input {
+	width: 100%;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    height: 40px; 
+    padding: 5px
+}
+
+.mainButtons {
+	width: 80%;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 20px;
+	font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    height: 40px; 
+    padding: 5px
 }
 
 /*HOME PAGE CSS*/
+
+.home-page-content {
+	background-image: url("/images/cartooncloud4.jpg");
+	min-height: 640px;
+	padding-top: 100px;
+}
 
 #sticky-header {
 	position: fixed;
 	width: 100%;
 	top: 0;
 	margin: 0 auto;
+	background: rgba(255, 255, 255, 1);
 }
 
 #logo {
 	border-radius: 50%;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	margin-left: 20px;
+	padding-top: 6px;
+	margin-left: 30px;
 	margin-top: 0;
 	float: left;
-
 }
 
 .main-nav {
 	float: right;
-	padding: 10px;
-	margin: 20px 10px ;
+	padding-top: 10px;
+	padding-right: 30px;
+	color: #60c934;
+	font-weight: bold;
 }
 
 .main-nav li {
@@ -64,9 +138,35 @@ button {
 	float: left;
 	display: inline-block;
 }
+ .main-nav li:hover {
+ 	font-size: 20px;
+ 	color: #f8812f;
+ 	cursor: pointer;
+ }
 
-.home-page-content {
-	padding-top: 100px;
+#gardeningBlurb {
+	font-size: 26px;
+	color: #f8812f;
+	margin: 0 19%;
+	padding: 17px;
+  	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.95);
+}
+#gardeningBlurb p {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#quotes {
+  padding: 17px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  margin: 35px 45px;
+  font-size: 18px;
+}
+
+cite {
+	margin-left: 90px;
 }
 
 /*SEASONS PAGES CSS*/
@@ -81,20 +181,46 @@ button {
 	clear: both;
 	background-color: white;
 	border: 1px solid black;
+	border-radius: 25px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#newItemForm input {
+	margin-bottom: 10px
+    font-size: 16px;
+    margin-top: 5px;
+    border-radius: 5px;
+    padding: 5px
+}
+
+#newItemForm p {
+	display: inline;
+}
+
+#newButton {
+	width: 80%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    height: 40px; 
+    padding: 5px
 }
 
 #add-item-icon {
 	position: fixed;
 	padding: 10px 12px;
 	border-radius: 50%;
-	border: 1px solid black;
+	border: 2px solid #baf237;
 	width: 40px;
 	height: auto;
 	color: white;
-	background-color: green;
-	right: 15px;
-	bottom: 15px;
+	background-color: #60c934;
+	right: 20px;
+	bottom: 20px;
 	-webkit-transition: -webkit-transform .6s ease-in-out;
     transition: transform .6s ease-in-out;
 }
@@ -106,25 +232,56 @@ button {
 
 /*SEASONS PAGE PRODUCE LIST CSS*/
 
+body {
+	background-color: #ffae5d;
+}
+
+ul {
+    list-style: none; /* Remove list bullets */
+    padding: 0;
+    margin: 0;
+}
+
 .userData.season {
 	float: right;
-	margin-top: 70px;
-	margin-right: 50px;
+	margin-top: 90px;
+	margin-right: 150px;
 }
 
 #excited {
 	text-align: center;
+	color: white;
 }
 
 .indiv-produce {
-	border: 1px solid black;
+	min-width: 250px;
+	border: 1px solid #baf237;
 	padding: 0px 7px;
 	margin: 10px;
-	background-color: lightblue;
+	background-color: #60c934;
+	border-radius: 15px;
+	color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.delete {
+	margin-top: 4px!important;
+}
+.arrow, .delete {
+	transform: scale(1.3, 1.3);
+	margin-top: 5px;
 }
 
 .arrow, .edit, .delete {
+	margin-left: 7px;
 	display: inline;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	float: right;
+	background: #60c934;
+	color: white;
+
 }
 
 hr {
@@ -134,4 +291,10 @@ hr {
 
 .moreInfo h4 {
 	display: inline-block;
+}
+
+/*SEASON PAGE EDIT FORM*/
+
+.edit-Item {
+	margin-top: 100px;
 }

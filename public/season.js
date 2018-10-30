@@ -35,13 +35,13 @@ return `
 		   	 	<label for="plant">Plant</label><br/>
 
 		   	 	<label for="plantBy">Plant By:</label>
-		    	<input type="date" id="plantBy">
+		    	<input type="date" id="plantBy" required>
 		    	<br>
 
 		  		<label for="datePlanted">Date Planted:</label>
 		    	<input type="date" id="datePlanted">  	
 
-		    	<button type="submit">Submit</button>
+		    	<button id="newButton" type="submit">Submit</button>
 			</fieldset>
 		</form>
 		</div>
@@ -114,24 +114,65 @@ function generateSeasonProduce(data) {
 	   $('.userData.season').append(
            ` <div id="${data.id}" class="indiv-produce">
                 <h3 data="${data.id}">${data.name} 
-                	<button class="arrow">&#9660;</button>
-                	<button class="edit">&#9998</button>
-                	<button class="delete">&#10062 </button>
+                	<button class="delete">&#x2297</button>
+                	<button class="arrow">&#9660;</button>               	
                 </h3>
                 <hr hidden>
                 <div class="moreInfo" id="${data.id}" hidden>
-                	
-                    <h4>Germinate Indoors:</h4> 
-                        <span>${data.germinateIndoors}</span>
-                        <br>
-                    <h4>Seed or Plant:</h3>
-                        <span>${data.seedorPlant}</span>
-                        <br>
-                    <h4>Plant By:</h4>
-                        <span>${data.plantBy}</span>
-                        <br>
-                    <h4>Date Planted:</h4>
-                        <span>${data.datePlanted}</span>
+                	<ul>
+                		<li class = "germinateSection">
+		                    <h4>Germinate Indoors:</h4> 
+		                        <span id="testedit" >${data.germinateIndoors}
+		                        	<button class="edit">&#9998</button>
+		                        </span>
+		                        <form class="germinate-edit" hidden>
+		                            <input type="checkbox" id="editgerminate" aria-label="germinate">
+		                            <label for="editgerminate">Checked = Yes</label>
+		                            <button type="submit" class="submit-button">Save</button>
+		                        </form>
+		                    <br>
+	                    </li>
+
+	                    <li class = "seedOrPlantSection">
+		                    <h4>Seed or Plant:</h3>
+		                        <span >${data.seedorPlant}
+		                            <button class="edit">&#9998</button>
+		                        </span>
+		                        <form class="seedorplant-edit" hidden>
+									<input type="radio" id="editseed" name="editseedOrPlant" value="seed">
+				    				<label for="editseed">Seed</label>
+				    				<input type="radio" id="editplant" name="editseedOrPlant" value="plant">
+				   	 				<label for="editplant">Plant</label><br/>
+				   	 				<button type="submit" class="submit-button">Save</button>
+		                        </form>
+	                        <br>
+	                    </li>
+
+	                    <li class = "plantBySection">
+		                    <h4>Plant By:</h4>
+		                        <span >${data.plantBy}
+		                           	<button class="edit">&#9998</button>
+		                        </span>
+		                        <form class="plantBy-edit" hidden>
+		                        	<label for="plantBy"></label>
+		    						<input type="date" id="plantBy" required>
+		    						<button type="submit" class="submit-button">Save</button>
+		    					</form>
+	                        <br>
+	                    </li>
+
+	                    <li class= "datePlantedSection">
+		                    <h4>Date Planted:</h4>
+		                        <span >${data.datePlanted}
+		                           	<button class="edit">&#9998</button>
+		                        </span>
+		                        <form class= "datePlanted-edit" hidden>
+		                        	<label for="datePlanted"></label>
+		    						<input type="date" id="datePlanted">
+		    						<button type="submit" class="submit-button">Save</button>	
+		                        </form>
+		                </li>
+                    <ul>
                 </div>
             </div>`);
 };
@@ -165,7 +206,7 @@ function onSubmitItemClick() {
 		 		season: $('#season').val(),
 		 		name: $('#name').val(),
 		 		germinateIndoors: $('#germinateIndoors').prop("checked"),
-		 		seedOrPlant: $('#seedOrplant').val(),
+		 		seedOrPlant: $('#seedOrplant').prop('checked'),
 		 		plantBy: new Date($('#plantBy').val()),
 		 		datePlanted: $('#datePlanted').val()
 		 	};
@@ -232,11 +273,60 @@ function deleteProduceItem(_id) {
 // -------------- FUNCTIONS TO EDIT A PRODUCE ITEM -----------
 
 function onEditItemClick() {
-	$('.edit').on('click', function(event) {
+$('.indiv-produce').on('click', '.edit', function(event) {
 		event.preventDefault();
-		const plant = $(this).parents(".indiv-produce").find(".moreInfo");
-		plant.toggle();
-		// onEditProduceSave(target);
+		const produceId = event.target.closest('div').id;
+		const formTarget = event.target.closest('li').className;
+		const target = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`);
+        target.children('form').toggle();
+		editSubmit();
+	});
+};
+
+function editSubmit(data) {
+	$('.indiv-produce').on('click', '.germinate-edit', function(event) {
+		event.preventDefault();
+		const produceId = event.target.closest('div').id;
+		const formTarget = event.target.closest('li').className;
+		const updateInfo = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').prop("checked");
+		const newProduceInfo = {
+			id: produceId,
+			germinateIndoors: updateInfo
+		};
+		putEditProduce(produceId, newProduceInfo);
+	});
+	$('.indiv-produce').on('click', '.seedorplant-edit', function(event) {
+		event.preventDefault();
+		const produceId = event.target.closest('div').id;
+		const formTarget = event.target.closest('li').className;
+		const updateInfo = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').val() || $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').prop("checked");
+		const newProduceInfo = {
+			id: produceId,
+			seedOrPlant: updateInfo
+		};
+		putEditProduce(produceId, newProduceInfo);
+	});
+	$('.indiv-produce').on('click', '.plantBy-edit', function(event) {
+		event.preventDefault();
+		const produceId = event.target.closest('div').id;
+		const formTarget = event.target.closest('li').className;
+		const updateInfo = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').val();
+		const newProduceInfo = {
+			id: produceId,
+			plantBy: updateInfo
+		};
+		putEditProduce(produceId, newProduceInfo);
+	});
+		$('.indiv-produce').on('click', '.datePlanted-edit', function(event) {
+		event.preventDefault();
+		const produceId = event.target.closest('div').id;
+		const formTarget = event.target.closest('li').className;
+		const updateInfo = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').val();
+		const newProduceInfo = {
+			id: produceId,
+			datePlanted: updateInfo
+		};
+		putEditProduce(produceId, newProduceInfo);
 	});
 };
 
@@ -244,7 +334,7 @@ function onEditItemClick() {
 
 // };
 
-// function putEditProduce(season, _id) {
+// function putEditProduce(_id, newProduceInfo) {
  // 	var editedProduce = new Object();  
  //        person.name = "Sourav";  
  //        person.surname = "Kayal";  
@@ -267,3 +357,4 @@ function onEditItemClick() {
 //         console.error(err);
 //     });
 // };
+
