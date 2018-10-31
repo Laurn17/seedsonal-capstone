@@ -8,7 +8,7 @@ const produceSchema = mongoose.Schema({
 	season: {type: String, required: true},
 	name: {type: String, required: true},
 	germinateIndoors: {type: Boolean},
-	seedOrPlant: {type: String, enum: ['Seed', 'Plant']},
+	seedOrPlant: {type: String, enum: ['seed', 'plant']},
 	plantBy: {type: Date, required: true},
 	datePlanted: {type: Date},
 	username: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
@@ -22,7 +22,7 @@ produceSchema.methods.serialize = function() {
     season: this.season,
     name: this.name,
     germinateIndoors: this.germinateIndoors,
-    seedOrPlant: this.seedorPlant,
+    seedOrPlant: this.seedOrPlant,
     plantBy: this.plantBy.toDateString(),
     datePlanted: this.datePlanted && this.datePlanted.toDateString()
   };

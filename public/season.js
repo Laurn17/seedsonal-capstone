@@ -29,9 +29,9 @@ return `
 		    	<br>
 
 		    	<p>Grow From A:</p>
-		    	<input type="radio" id="seed" name="seedOrPlant" value="seed">
+		    	<input type="radio" id="seed" name="seedOrPlant" value="seed" required>
 		    	<label for="seed">Seed</label>
-		    	<input type="radio" id="plant" name="seedOrPlant" value="plant">
+		    	<input type="radio" id="plant" name="seedOrPlant" value="plant" required>
 		   	 	<label for="plant">Plant</label><br/>
 
 		   	 	<label for="plantBy">Plant By:</label>
@@ -123,7 +123,7 @@ function generateSeasonProduce(data) {
                 	<ul>
                 		<li class = "germinateSection">
 		                    <h4>Germinate Indoors:</h4> 
-		                        <span id="testedit" >${data.germinateIndoors}
+		                        <span>${data.germinateIndoors}
 		                        	<button class="edit">&#9998</button>
 		                        </span>
 		                        <form class="germinate-edit" hidden>
@@ -136,7 +136,7 @@ function generateSeasonProduce(data) {
 
 	                    <li class = "seedOrPlantSection">
 		                    <h4>Seed or Plant:</h3>
-		                        <span >${data.seedorPlant}
+		                        <span >${data.seedOrPlant}
 		                            <button class="edit">&#9998</button>
 		                        </span>
 		                        <form class="seedorplant-edit" hidden>
@@ -155,8 +155,8 @@ function generateSeasonProduce(data) {
 		                           	<button class="edit">&#9998</button>
 		                        </span>
 		                        <form class="plantBy-edit" hidden>
-		                        	<label for="plantBy"></label>
-		    						<input type="date" id="plantBy" required>
+		                        	<label for="editplantBy"></label>
+		    						<input type="date" id="editplantBy" required>
 		    						<button type="submit" class="submit-button">Save</button>
 		    					</form>
 	                        <br>
@@ -168,8 +168,8 @@ function generateSeasonProduce(data) {
 		                           	<button class="edit">&#9998</button>
 		                        </span>
 		                        <form class= "datePlanted-edit" hidden>
-		                        	<label for="datePlanted"></label>
-		    						<input type="date" id="datePlanted">
+		                        	<label for="editdatePlanted"></label>
+		    						<input type="date" id="editdatePlanted">
 		    						<button type="submit" class="submit-button">Save</button>	
 		                        </form>
 		                </li>
@@ -207,7 +207,7 @@ function onSubmitItemClick() {
 		 		season: $('#season').val(),
 		 		name: $('#name').val(),
 		 		germinateIndoors: $('#germinateIndoors').prop("checked"),
-		 		seedOrPlant: $('#seedOrplant').prop('checked'),
+		 		seedOrPlant: $('[name="seedOrPlant"]:checked').val(),
 		 		plantBy: new Date($('#plantBy').val()),
 		 		datePlanted: $('#datePlanted').val()
 		 	};
