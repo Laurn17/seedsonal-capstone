@@ -50,13 +50,6 @@ describe('Auth endpoints', function () {
         .request(app)
         .post('/api/auth/login')
         .then(function(res) {
-
-        // })
-        // .catch(err => {
-        //   if (err instanceof chai.AssertionError) {
-        //     throw err;
-        //   }
-        //   const res = err.response;
           expect(res).to.have.status(400);
         });
     });
@@ -65,15 +58,7 @@ describe('Auth endpoints', function () {
         .request(app)
         .post('/api/auth/login')
         .send({ username: 'wrongUsername', password })
-        .then(() =>
-          expect.fail(null, null, 'Request should not succeed')
-        )
-        .catch(err => {
-          if (err instanceof chai.AssertionError) {
-            throw err;
-          }
-
-          const res = err.response;
+        .then((res) => {
           expect(res).to.have.status(401);
         });
     });
@@ -82,15 +67,7 @@ describe('Auth endpoints', function () {
         .request(app)
         .post('/api/auth/login')
         .send({ username, password: 'wrongPassword' })
-        .then(() =>
-          expect.fail(null, null, 'Request should not succeed')
-        )
-        .catch(err => {
-          if (err instanceof chai.AssertionError) {
-            throw err;
-          }
-
-          const res = err.response;
+        .then((res) => {
           expect(res).to.have.status(401);
         });
     });
@@ -121,15 +98,7 @@ describe('Auth endpoints', function () {
       return chai
         .request(app)
         .post('/api/auth/refresh')
-        .then(() =>
-          expect.fail(null, null, 'Request should not succeed')
-        )
-        .catch(err => {
-          if (err instanceof chai.AssertionError) {
-            throw err;
-          }
-
-          const res = err.response;
+        .then((res) => {
           expect(res).to.have.status(401);
         });
     });
@@ -151,15 +120,7 @@ describe('Auth endpoints', function () {
         .request(app)
         .post('/api/auth/refresh')
         .set('Authorization', `Bearer ${token}`)
-        .then(() =>
-          expect.fail(null, null, 'Request should not succeed')
-        )
-        .catch(err => {
-          if (err instanceof chai.AssertionError) {
-            throw err;
-          }
-
-          const res = err.response;
+        .then((res) => {
           expect(res).to.have.status(401);
         });
     });
@@ -171,12 +132,12 @@ describe('Auth endpoints', function () {
             firstName,
             lastName
           },
+          exp: Math.floor(Date.now() / 1000) - 10 // Expired ten seconds ago
         },
         JWT_SECRET,
         {
           algorithm: 'HS256',
           subject: username,
-          expiresIn: Math.floor(Date.now() / 1000) - 10 // Expired ten seconds ago
         }
       );
 
@@ -184,15 +145,7 @@ describe('Auth endpoints', function () {
         .request(app)
         .post('/api/auth/refresh')
         .set('authorization', `Bearer ${token}`)
-        .then(() =>
-          expect.fail(null, null, 'Request should not succeed')
-        )
-        .catch(err => {
-          if (err instanceof chai.AssertionError) {
-            throw err;
-          }
-
-          const res = err.response;
+        .then((res) => {
           expect(res).to.have.status(401);
         });
     });
