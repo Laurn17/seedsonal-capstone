@@ -5,11 +5,9 @@ const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
-var _ = require('lodash');  
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:8080/seedsonal-capstone");
 
 const { DATABASE_URL, PORT } = require('./config');
 
@@ -47,15 +45,10 @@ app.use('*', (req, res) => {
   return res.status(404).json({ message: 'Not Found' });
 });
 
-// app.get('/api/protected', jwtAuth, (req, res) => {
-//   return res.json({
-//     data: 'rosebud'
-//   });
-// });
 
-app.get("/", (req, res) => {
-  res.sendFile("/public/index.html");
-});
+// app.get("/", (req, res) => {
+//   res.sendFile("./public/index.html");
+// });
 
 
 let server;

@@ -7,6 +7,10 @@
     "test": "mocha --exit",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Laurn17/seedsonal-capstone"
+  },
   "directories": {
     "test": "test"
   },
