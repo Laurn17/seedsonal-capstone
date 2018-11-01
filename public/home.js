@@ -5,6 +5,7 @@ function sendToHomePage() {
     $('.container').remove();
     $('.home-page').html(homePageContent);
     watchSeasonClick();
+    watchSpringClick();
 };
 
 function watchLogoClick() {
@@ -20,9 +21,9 @@ function homePageContent() {
             </a>
                 <nav role="navigation">
                     <ul class = "main-nav">
-                        <li class = "spring">SPRING |</li>
-                        <li class = "summer">SUMMER |</li>
-                        <li class = "autumn">AUTUMN |</li>
+                        <li class = "spring">SPRING</li>
+                        <li class = "summer">SUMMER</li>
+                        <li class = "autumn">AUTUMN</li>
                         <li class = "winter">WINTER</li>
                     </ul>
                 </nav>
@@ -73,4 +74,139 @@ function watchSeasonClick() {
     });
 };
 
+function watchSpringClick() {
+    $('.main-nav').on('click', '.spring', function(event) {
+        event.preventDefault();
+        $('.home-page-content').remove();
+        $('.common-items').html(springCommon);
+    });
+};
+
+function springCommon() {
+    return `
+        <h2 class="excitedCommon">Commonly Grown Produce</h2>
+            <div class="commonList">
+                <p>Early Spring</p>
+                    <ul>
+                        <li>spring</li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                <p>Mid Spring</p>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                <p>Late Spring</p>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+            </div>
+    `;
+};
+
+function summerCommon() {
+    return `
+        <h2 class="excitedCommon">Commonly Grown Produce</h2>
+            <div class="commonList">
+                <p>Early Summer</p>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                <p>Mid Summer</p>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                <p>Late Summer</p>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+            </div>`
+        ;
+};
+
+function autumnCommon() {
+    return `
+        <h2 class="excitedCommon">Commonly Grown Produce</h2>
+         <div class="commonList">
+            <p>Early Autumn</p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            <p>Mid Autumn</p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            <p>Late Autumn</p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+        </div>
+    `;
+};
+
+function winterCommon() {
+    return `
+        <h2 class="excitedCommon">Commonly Grown Produce</h2>
+         <div class="commonList">
+            <p>Early Winter</p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            <p>Mid Winter</p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            <p>Late Winter</p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+        </div>
+    `;
+};
 

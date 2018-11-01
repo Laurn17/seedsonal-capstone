@@ -7,6 +7,8 @@
 body, html {
 	height: 100%;
 	margin: 0px;
+	background-color: #f8812f;
+	font-family: Verdana;
 }
 
 .container {
@@ -38,8 +40,10 @@ body, html {
 
 #mainHeader {
 	text-align: center;
-	margin-top: 100px;
-	padding-left: 65px
+	margin-top: 120px;
+	padding-left: 65px;
+	max-width: 450px;
+	margin-right: 5px;
 }
 
 #mainHeader h1 {
@@ -134,15 +138,17 @@ fieldset legend {
 }
 
 .main-nav li {
-	margin: 15px 2px;
+	margin: 15px 5px;
 	float: left;
 	display: inline-block;
 }
  .main-nav li:hover {
- 	font-size: 20px;
+ 	font-size: 17px;
  	color: #f8812f;
+ 	text-decoration: underline;
  	cursor: pointer;
  }
+
 
 #gardeningBlurb {
 	font-size: 26px;
@@ -232,32 +238,29 @@ cite {
 
 /*SEASONS PAGE PRODUCE LIST CSS*/
 
-body {
-	background-color: #ffae5d;
-}
-
 ul {
     list-style: none; /* Remove list bullets */
     padding: 0;
     margin: 0;
 }
 
-.userData.season {
-	float: right;
+.userData.season, .common-items {
 	margin-top: 90px;
-	margin-right: 150px;
+
 }
 
-#excited {
+#excited, .excitedCommon {
 	text-align: center;
 	color: white;
+	width: 60%;
+	margin: 10px auto;
 }
 
 .indiv-produce {
-	min-width: 250px;
+	width: 60%;
 	border: 1px solid #baf237;
 	padding: 0px 7px;
-	margin: 10px;
+	margin: 10px auto;
 	background-color: #60c934;
 	border-radius: 15px;
 	color: white;
@@ -293,8 +296,11 @@ hr {
 	display: inline-block;
 }
 
-/*SEASON PAGE EDIT FORM*/
 
-.edit-Item {
-	margin-top: 100px;
+/*SEASONS PAGE COMMON PRODUCE */
+
+.commonList {
+	width: 60%;
+	color: white;
+	margin: 10px auto;
 }

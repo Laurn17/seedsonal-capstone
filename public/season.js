@@ -6,10 +6,16 @@ function seasonContent(season) {
 return `
 	<main role="main">
 
-		<div class="common-items">
-		</div>
+		<div class ="container">
+			<div class="col-6">
+				<div class="common-items">
+				</div>
+			</div>
 
-		<div class = "userData season">
+			<div class="col-6">
+				<div class ="userData season">
+				</div>
+			</div>
 		</div>
 
 		<div class="iconAndForm">
@@ -107,7 +113,7 @@ function displaySeasonProduce(data) {
 
 // ---- STILL NEED TO ADD EDIT/DELETE ICON TO WHOLE DIV CREATE EVENT LISTENERS FOR IT
 function displayProduceTitle() {
-	return ` <h2 id="excited">I'm excited to grow:</h2>`
+	return ` <h2 id="excited">My List of Produce:</h2>`
 };
 
 function generateSeasonProduce(data) {
