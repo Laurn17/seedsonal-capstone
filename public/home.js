@@ -6,6 +6,9 @@ function sendToHomePage() {
     $('.home-page').html(homePageContent);
     watchSeasonClick();
     watchSpringClick();
+    watchSummerClick();
+    watchAutumnClick();
+    watchWinterClick();
 };
 
 function watchLogoClick() {
@@ -86,127 +89,187 @@ function springCommon() {
     return `
         <h2 class="excitedCommon">Commonly Grown Produce</h2>
             <div class="commonList">
-                <p>Early Spring</p>
+            <div class="region-produce">
+                <p>High Rainfall</p>
                     <ul>
-                        <li>spring</li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Eggplant</li>
+                        <li>Vegetable fern</li>
+                        <li>Pumpkin</li>
+                        <li>Bamboo shoots</li>
+                        <li>Scarlet ivy gourd</li>
                     </ul>
-                <p>Mid Spring</p>
+                    <br>
+            </div>
+            <div class="region-produce">
+                <p>Average rainfall</p>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Sweet potatoes</li>
+                        <li>Peppers</li>
+                        <li>Tomatoes</li>
+                        <li>Kidney beans</li>
+                        <li>Honeydew</li>
                     </ul>
-                <p>Late Spring</p>
+                    <br>
+            </div>
+            <div class="region-produce">
+                <p>Dry Weather</p>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Asparagus</li>
+                        <li>Rhubarb</li>
+                        <li>Bitter gourd melon</li>
+                        <li>Cucumbers</li>
+                        <li>Woody stemmed herbs</li>
                     </ul>
+                    <br>
+            </div>
+                <a href="https://www.gardeningknowhow.com/edible/herbs/hgen/try-something-new-this-spring-grow-your-own-herbs.htm" target="_blank">See Spring Herbs </a>
             </div>
     `;
+};
+
+function watchSummerClick() {
+    $('.main-nav').on('click', '.summer', function(event) {
+        event.preventDefault();
+        $('.home-page-content').remove();
+        $('.common-items').html(summerCommon);
+    });
 };
 
 function summerCommon() {
     return `
         <h2 class="excitedCommon">Commonly Grown Produce</h2>
             <div class="commonList">
-                <p>Early Summer</p>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                <p>Mid Summer</p>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                <p>Late Summer</p>
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
+                <div class="region-produce">
+                    <p>Zones 3 & 4</p>
+                        <ul>
+                            <li>Kale</li>
+                            <li>Broccoli</li>
+                            <li>Spinach</li>
+                            <li>Carrots</li>
+                            <li>Tomatoes</li>
+                        </ul>
+                        <br>
+                </div>
+                <div class="region-produce">
+                <p>Zones 6 & 7</p>
+                        <ul>
+                            <li>Corn</li>
+                            <li>Cabbage</li>
+                            <li>Onions</li>
+                            <li>Peppers</li>
+                            <li>Cucumbers</li>
+                            <li>Tomatoes</li>
+                        </ul>
+                        <br>
+                </div>
+                <div class="region-produce">
+                    <p>Zone 9</p>
+                        <ul>
+                            <li>Cucumber</li>
+                            <li>Corn</li>
+                            <li>Peppers</li>
+                            <li>Olives</li>
+                            <li>Raspberries</li>
+                        </ul>
+                        <br>
+                </div>            
+                    <a href="https://www.ufseeds.com/learning/planting-schedules/Zone-9-Planting-Calendar" target="_blank">See More Zones</a>
             </div>`
         ;
+};
+
+function watchAutumnClick() {
+    $('.main-nav').on('click', '.autumn', function(event) {
+        event.preventDefault();
+        $('.home-page-content').remove();
+        $('.common-items').html(autumnCommon);
+    });
 };
 
 function autumnCommon() {
     return `
         <h2 class="excitedCommon">Commonly Grown Produce</h2>
-         <div class="commonList">
-            <p>Early Autumn</p>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            <p>Mid Autumn</p>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            <p>Late Autumn</p>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-        </div>
+            <div class="commonList">
+                <div class="region-produce">
+                    <p>Northern U.S. and Southern Canada</p>
+                        <ul>
+                            <li>Arugula</li>
+                            <li>Collard greens</li>
+                            <li>Lettuce</li>
+                            <li>Mustard greens</li>
+                            <li>Peas</li>
+                        </ul>
+                        <br>
+                </div>
+                <div class="region-produce">
+                    <p>Mid-Atlantic Region</p>
+                        <ul>
+                            <li>Bok Choy</li>
+                            <li>Mache</li>
+                            <li>Radishes</li>
+                            <li>Spinach</li>
+                        </ul>
+                        <br>
+                </div>
+                <div class="region-produce">
+                    <p>Southeast/Gulf Coast Region</p>
+                        <ul>
+                            <li>Beets</li>
+                            <li>Kale</li>
+                            <li>Cauliflower (Transplants)</li>
+                            <li>Carrots</li>
+                            <li>Broccoli (Transplants)</li>
+                        </ul>
+                        <br>
+                </div>
+                    <a href="https://www.thespruce.com/vegetables-to-plant-in-september-2540001" target="_blank">See More Regions</a>
+            </div>
     `;
+};
+
+function watchWinterClick() {
+    $('.main-nav').on('click', '.winter', function(event) {
+        event.preventDefault();
+        $('.home-page-content').remove();
+        $('.common-items').html(winterCommon);
+    });
 };
 
 function winterCommon() {
     return `
         <h2 class="excitedCommon">Commonly Grown Produce</h2>
-         <div class="commonList">
-            <p>Early Winter</p>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            <p>Mid Winter</p>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            <p>Late Winter</p>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-        </div>
+            <div class="commonList">
+                <div class="region-produce">
+                    <p>In a Greenhouse/ Indoors</p>
+                        <ul>
+                            <li>Asparagus Pea</li>
+                            <li>Basil</li>
+                            <li>Leeks</li>
+                            <li>Sweet Peppers</li>
+                            <li>Early potatoes</li>
+                        </ul>
+                        <br>
+                </div>
+                <div class="region-produce">
+                    <p>In a Cold Frame/ Under Cloches</p>
+                        <ul>
+                            <li>Beetroot</li>
+                            <li>Spring onions</li>
+                            <li>Radishes</li>
+                            <li>Chicory</li>
+                            <li>lettuce</li>
+                        </ul>
+                        <br>
+                </div>
+                <div class="region-produce">
+                    <p>Direct sow outdoors</p>
+                        <ul>
+                            <li>Hardy broad beans</li>
+                        </ul>
+                        <br>
+                </div>
+                    <a href="https://www.thompson-morgan.com/what-to-sow-and-grow-in-february" target="_blank">See More Produce or Flowers</a>
+            </div>
     `;
 };
 

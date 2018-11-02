@@ -56,15 +56,11 @@ return `
 			<i class="fas fa-plus"></i>
 		</div>
 		</div>
-	</main> `
+	</main> 
+
+	<footer></footer>`
 };
 
-// function generateCommonProduce(season) {
-// 	   $('.common-items').html(
-//            ` <div>
-				// ${commonItems.season}
-//             </div>`);
-// };
 
 // ------------ FUNCTIONS TO RETRIEVE CURRENT LISTS OF PRODUCE -------------
 function getSeasonData(season) {
@@ -92,7 +88,7 @@ function displaySeasonProduce(data) {
     if (data.length === 0) {
         $('.userData.season').html(
             `<div class="noProduceMessage">
-                <p>Looks like you haven't chosen what to grow yet!<br>
+                <p>Looks like you haven't chosen what to grow yet!<br><br>
                 Click the "+" icon to add an item.</p>
             </div>`
             )}
@@ -113,7 +109,7 @@ function displaySeasonProduce(data) {
 
 // ---- STILL NEED TO ADD EDIT/DELETE ICON TO WHOLE DIV CREATE EVENT LISTENERS FOR IT
 function displayProduceTitle() {
-	return ` <h2 id="excited">My List of Produce:</h2>`
+	return ` <h2 id="excited">My ${season} Produce</h2>`
 };
 
 function generateSeasonProduce(data) {
@@ -286,7 +282,7 @@ $('.indiv-produce').on('click', '.edit', function(event) {
 		const formTarget = event.target.closest('li').className;
 		const target = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`);
         target.children('form').toggle();
-		editSubmit();
+		editSubmit(target);
 	});
 };
 
@@ -307,7 +303,7 @@ function editSubmit(data) {
 		event.preventDefault();
 		const produceId = event.target.closest('div').id;
 		const formTarget = event.target.closest('li').className;
-		const updateInfo = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').val() || $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').prop("checked");
+		const updateInfo = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').val();
 		
 		const newProduceInfo = {
 			id: produceId,
