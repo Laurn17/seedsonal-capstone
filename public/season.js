@@ -303,7 +303,7 @@ function editSubmit(data) {
 		event.preventDefault();
 		const produceId = event.target.closest('div').id;
 		const formTarget = event.target.closest('li').className;
-		const updateInfo = $('.userData.season').find(`#${produceId}`).find(`.${formTarget}`).children('form').children('input').val();
+		const updateInfo = $(`#${produceId} .${formTarget} input:checked`).val();
 		
 		const newProduceInfo = {
 			id: produceId,
