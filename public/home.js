@@ -38,26 +38,43 @@ function homePageContent() {
         <div class = "home-page-content">
         <main role="main">
             <div id="gardeningBlurb">
-                <p> From a small seed, a mighty garden may grow </p>
+                <p> From A Small Seed, A Mighty Garden May Grow </p>
             </div>
 
-            <div id="quotes">
-                <blockquote cite="https://www.brainyquote.com/authors/liberty_hyde_bailey">
-                    <p>"A garden requires patient labor and attention. Plants do not grow merely to satisfy ambitions or to fulfill good intentions. They thrive because someone expended effort on them."</p>
-                </blockquote>
-                    <cite>– Liberty Hyde Bailey</cite>
-                <br>
-                <br>
-                <blockquote cite="https://www.daviddomoney.com/35-inspirational-gardening-quotes-and-famous-proverbs/#.W9e4r2hKjIU">
-                    <p>"The glory of gardening: hands in the dirt, head in the sun, heart with nature. To nurture a garden is to feed not just on the body, but the soul."</p>
-                </blockquote>
-                    <cite>– Alfred Austin</cite>
-                <br>
-                <br>
-                <blockquote cite="https://www.brainyquote.com/quotes/thomas_jefferson_157214?src=t_gardening">
-                    <p>"No occupation is so delightful to me as the culture of the earth, and no culture comparable to that of the garden."</p>
-                </blockquote>
-                    <cite>– Thomas Jefferson</cite>
+            <div id="about">
+                <p>I have dreams of growing a beautiful garden. I research produce I want to grow, how to grow it, and when to grow it. 
+                Come the appropriate season, I have forgotten what I was going to plant!</p>
+                <p> Seedsonal is a site to help people rememeber and take action on their gardening dreams.</p>
+                <p><b> Select one of the seasons above to start building your list.</b></p>
+                <p>Happy Gardening!</p>
+            </div>
+
+            <div class="container1">
+                <div class="col-6">
+                    <div class="quotes">
+                        <blockquote class="bq3" cite="https://www.brainyquote.com/authors/liberty_hyde_bailey">
+                            <p>A garden requires patient labor and attention. Plants do not grow merely to satisfy ambitions or to fulfill good intentions. They thrive because someone expended effort on them.</p>
+                        </blockquote>
+                            <cite>– Liberty Hyde Bailey</cite>
+                        <br>
+                        <br>
+                        <blockquote  class="bq3" cite="https://www.daviddomoney.com/35-inspirational-gardening-quotes-and-famous-proverbs/#.W9e4r2hKjIU">
+                            <p>The glory of gardening: hands in the dirt, head in the sun, heart with nature. To nurture a garden is to feed not just on the body, but the soul.</p>
+                        </blockquote>
+                            <cite>– Alfred Austin</cite>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="quotes">
+                        <blockquote class="bq3" cite="https://www.brainyquote.com/quotes/thomas_jefferson_157214?src=t_gardening">
+                            <p>No occupation is so delightful to me as the culture of the earth, and no culture comparable to that of the garden.</p>
+                        </blockquote>
+                            <cite>– Thomas Jefferson</cite>
+                        <br>
+                        <br>
+                    </div>
+                </div>
             </div>
         </main>
         

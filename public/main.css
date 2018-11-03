@@ -53,12 +53,14 @@ body, html {
 #mainHeader h1 {
 	font-size: 50px;
 	color: white;
+	width: 100%;
 }
 
 #mainHeader p {
 	margin-top: 59px;
 	font-size: 22px;
 	color: white;
+	width: 100%;
 }
 
 header a {
@@ -91,20 +93,18 @@ header a {
 }
 
 .login-messages {
-	padding-right: 46px;
+	margin-right: 100px;
+	max-width: 400px;
 }
 
 #login-error, #signUp-error {
+	margin: 10px auto;
 	color: white;
 	text-align: center;	
-	margin-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
 	font-size: 15px;
 	background: #6495ed;
 	box-shadow: 0px 0px 20px .5px;
 	padding: 1px;
-	width: 80%;
 }
 
 fieldset {
@@ -155,8 +155,8 @@ fieldset legend {
 
 .home-page-content {
 	background-image: url("/images/cartooncloud4.jpg");
-	min-height: 700px;
-	padding-top: 100px;
+	min-height: 800px;
+	padding-top: 60px;
 }
 
 #sticky-header {
@@ -196,26 +196,72 @@ fieldset legend {
  	cursor: pointer;
  }
 
+.container1 {
+	background-image: url("/images/cartooncloud4.jpg");
+	height: 100%;
+	width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container1::before,
+.container1::after {
+	display: table;
+    content: '';
+}
+
+.container1::after {
+    clear: both;
+}
 
 #gardeningBlurb {
-	font-size: 26px;
+	font-weight: bolder;
+	font-size: 30px;
 	color: #f8812f;
-	margin: 0 19%;
+	margin: 0 10%;
 	padding: 17px;
   	border-radius: 20px;
-	background: rgba(255, 255, 255, 0.98);
-}
-#gardeningBlurb p {
-    margin: 0 auto;
-    text-align: center;
+/*	background: rgba(255, 255, 255, 0.98);*/
 }
 
-#quotes {
-  padding: 17px;
+#gardeningBlurb p {
+    text-align: center;
+    -webkit-text-stroke: 1.4px #834f23;
+}
+
+#about {
+	text-align: center;
+	margin: 0px 45px;
+	padding: 17px;
+	font-size: 18px;
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.98);
+}
+
+.quotes {
+  width: 90%;
+  padding-top: 17px;
+  padding-bottom: 17px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.97);
-  margin: 35px 45px;
-  font-size: 18px;
+  margin: 35px auto;
+}
+
+.bq3 { 
+	background: url('images/opensmartquote.png') top left no-repeat;
+	padding-left: 55px;
+	line-height: 16px;
+	color: #575757;
+}
+.bq3 p {
+	padding-right: 35px;
+	line-height: 18px;
+	background: url('images/closedsmartquote.png') bottom right no-repeat;
+	padding-bottom: 15px;
+	color: #333;
+	font-size: 13px;
 }
 
 cite {
