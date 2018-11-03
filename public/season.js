@@ -58,7 +58,7 @@ return `
 		</div>
 	</main> 
 
-	<footer></footer>`
+	<footer role="contentinfo"></footer>`
 };
 
 
@@ -87,7 +87,7 @@ function displaySeasonProduce(data) {
     $('.userData.season').html('');
     if (data.length === 0) {
         $('.userData.season').html(
-            `<div class="noProduceMessage">
+            `<div class="noProduceMessage" aria-live="assertive">
                 <p>Looks like you haven't chosen what to grow yet!<br><br>
                 Click the "+" icon to add an item.</p>
             </div>`

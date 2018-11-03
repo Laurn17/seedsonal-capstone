@@ -25,10 +25,11 @@
 				</a>
 				<p>a superb way to remember what you want to plant and when</p>
 			</header>
-		</div>
-	
+	</div>
+
+	<div class="col-6">
 		<main role="main">
-			<div class="login-messages">
+			<div class="login-messages" aria-live="assertive">
 				<div id="signUp-success" hidden>
 					<p>User successfully registered.</p>
 				</div>
@@ -39,19 +40,19 @@
 					<p>Incorrect Username or Password</p>
 				</div>
 			</div>
-
-		<div class="col-6">
+		
+		
 		<div id="login">
 			<form role="login" action="/api/auth/login" id="login-form" method ="post">
 				<fieldset>
 						<label for="username">Username</label>
 						<br>
-						<input type="text" id="username" required>
+						<input type="text" id="username" placeholder="ex: gardenguru" required>
 						<br>
 						<label for="password">Password</label>
 						<br>
-						<input type="password" id="password" required>
-					<button class="mainButtons" type="submit">Login</button>
+						<input type="password" id="password" placeholder="ex: 4@Rd3n3r" required>
+					<button class="mainButtons" type="submit">LOGIN</button>
 				</fieldset>
 			</form>
 
@@ -64,26 +65,30 @@
 						<legend>Create Your Account</legend>
 							<label for="signUp-firstName">First name</label>
 							<br>
-							<input type="text" id="signUp-firstName" required>
+							<input type="text" id="signUp-firstName" placeholder="Rhonda" required>
 								<br>
 							<label for="signUp-lastName">Last name</label>
 							<br>
-							<input type="text" id="signUp-lastName" required>
+							<input type="text" placeholder="Rhubarb" id="signUp-lastName" required>
 								<br>
 							<label for="signUp-username">Username</label>
 							<br>
-							<input type="text" id="signUp-username" required>
+							<input type="text" placeholder="ex:gardenguru"  id="signUp-username" required>
 								<br>
 							<label for="signUp-password">Password</label>
 							<br>
-							<input type="password" id="signUp-password" required>
+							<input type="password" placeholder="ex: 4@Rd3n3r" id="signUp-password" required>
 						
-						<button class="mainButtons" type="submit">Submit</button>
+							<button class="mainButtons" type="submit">SUBMIT</button>
+
 					</fieldset>
+					<div class=backLogin><u>Back to Login</u></div>
 			</form>
 		</div>
 		</div>
 	</main>
+	<section><img id="home-img" src = "/images/home-garden-art.png" />
+	</section>
 	</div>
 </body>
 
@@ -91,5 +96,4 @@
 <script src="main.js"></script>
 <script src="home.js"></script>
 <script src="season.js"></script>
-<script src="common.js"></script>
 </html>

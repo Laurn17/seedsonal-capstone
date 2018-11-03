@@ -37,14 +37,17 @@ body, html {
 	padding-left: 2%;
     padding-right: 2%;
     padding-bottom: 30px;
+    z-index: 5;
 }
+
 
 #mainHeader {
 	text-align: center;
-	margin-top: 120px;
+	margin-top: 125px;
 	padding-left: 65px;
 	max-width: 450px;
 	margin-right: 5px;
+	z-index: 2;
 }
 
 #mainHeader h1 {
@@ -62,8 +65,16 @@ header a {
 	text-decoration: none;
 }
 
+#home-img {
+    z-index: 1;
+    position: relative;
+    width: 50%;
+    margin-left: 55px;
+    margin-top: -150px;
+}
 
 #login, #signUp {
+	z-index: 5;
 	border: 1px solid #5fb839;
 	border-radius: 25px;
 	padding: 15px 15px;
@@ -72,6 +83,28 @@ header a {
 	box-shadow: 0px 0px 20px .8px;
 	max-width: 400px;
 	color: #60c934;
+	font-weight: bold;
+}
+
+#login p {
+	text-align: center;
+}
+
+.login-messages {
+	padding-right: 46px;
+}
+
+#login-error, #signUp-error {
+	color: white;
+	text-align: center;	
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 15px;
+	background: #6495ed;
+	box-shadow: 0px 0px 20px .5px;
+	padding: 1px;
+	width: 80%;
 }
 
 fieldset {
@@ -104,6 +137,18 @@ fieldset legend {
     border-radius: 5px;
     height: 40px; 
     padding: 5px
+}
+
+.register {
+	cursor: pointer;
+	z-index: 5;
+}
+
+.backLogin {
+	margin: 0 auto;
+	text-align: center;
+	font-size: 14px;
+	cursor: pointer;
 }
 
 /*HOME PAGE CSS*/
@@ -226,13 +271,13 @@ cite {
 	position: fixed;
     padding: 12px 15px;
 	border-radius: 50%;
-	border: 3px solid #80b839;
+	border: 2px solid #3779ef;
 	width: 50px;
 	height: 50px;
 	color: white;
-	background-color: #60c934;
+	background-color: #6495ed;
 	right: 20px;
-	bottom: 40px;
+	bottom: 30px;
 	-webkit-transition: -webkit-transform .6s ease-in-out;
     transition: transform .6s ease-in-out;
     z-index: 5;
@@ -366,4 +411,13 @@ footer {
 	height: 290px;
 	z-index: 1;
 	margin-top: -70px;
+}
+/*
+MISC*/
+
+button {
+	background-color: #834f23;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
 }

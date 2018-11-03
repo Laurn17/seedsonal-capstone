@@ -40,6 +40,7 @@ function watchSignUpClick() {
     $('#login').on('click', '.register', function(event) {
         $('#login').prop('hidden', true);
         $('#signUp').prop('hidden', false);
+        $('#login-error').prop('hidden', true);
     });
     watchSignUpSubmit();
 };
@@ -82,6 +83,16 @@ function signUpUser(_username, _password, _firstName, _lastName) {
     });
 };
 
+function backToLogin() {
+    $('.backLogin').on("click", function() {
+        $('#signUp').prop('hidden', true);
+        $('#login').prop('hidden', false);
+        $('#login-error').prop('hidden', true);
+        $('#signUp-error').prop('hidden', true);
+    });
+};
+
+  $(backToLogin);
   $(watchLoginSubmit);
   $(watchSignUpClick);
 
