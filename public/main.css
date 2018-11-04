@@ -93,7 +93,6 @@ header a {
 }
 
 .login-messages {
-	margin-right: 100px;
 	max-width: 450px;
 }
 
@@ -179,7 +178,7 @@ fieldset legend {
 
 #logout {
 	float: left;
-    margin-top: 8px;
+    margin-top: 25px;
     margin-left: 25px;
     color: green;
     font-weight: bold
@@ -484,6 +483,10 @@ button {
 	#home-img {
 	    margin-top: -100px;
 	}
+	.login-messages {
+		width: 100%;
+		margin-right: 0px; 
+	}
 
 }
 
@@ -642,6 +645,10 @@ button {
 	}
 	.userData.season {
     margin-top: 40px;
+	}
+	.noProduceMessage {
+		margin-top: 0px;
+		width: 100%;
 	}
 }
 
