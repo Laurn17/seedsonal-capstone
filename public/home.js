@@ -5,6 +5,7 @@ function sendToHomePage() {
     $('.container').remove();
     $('.home-page').html(homePageContent);
     watchSeasonClick();
+    watchMenuIconClick();
     watchSpringClick();
     watchSummerClick();
     watchAutumnClick();
@@ -22,14 +23,19 @@ function homePageContent() {
         <header role="banner" id="sticky-header">
             <a id="logo" href="#"><img src="images/leaf-logo.png" height="60" width="auto">
             </a>
-                <nav role="navigation">
-                    <ul class = "main-nav">
-                        <li class = "spring">SPRING</li>
-                        <li class = "summer">SUMMER</li>
-                        <li class = "autumn">AUTUMN</li>
-                        <li class = "winter">WINTER</li>
-                    </ul>
-                </nav>
+
+            <div class="menuIcon">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav role="navigation" visible>
+                <ul class = "main-nav">
+                    <li class = "spring">SPRING</li>
+                    <li class = "summer">SUMMER</li>
+                    <li class = "autumn">AUTUMN</li>
+                    <li class = "winter">WINTER</li>
+                </ul>
+            </nav>
         </header>
         
         <div class = "by-season-content" >
@@ -94,6 +100,14 @@ function watchSeasonClick() {
     });
 };
 
+function watchMenuIconClick() {
+    $('.menuIcon').on('click', function(event) {
+        event.preventDefault();
+        $('nav').prop("visible", true);
+    });
+};
+
+// DISPLAYING COMMON PRODUCE
 function watchSpringClick() {
     $('.main-nav').on('click', '.spring', function(event) {
         event.preventDefault();
@@ -279,7 +293,7 @@ function winterCommon() {
                         <br>
                 </div>
                 <div class="region-produce">
-                    <p>Direct sow outdoors</p>
+                    <p>Direct Sow Outdoors</p>
                         <ul>
                             <li>Hardy broad beans</li>
                         </ul>

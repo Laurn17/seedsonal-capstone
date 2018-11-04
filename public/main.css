@@ -43,7 +43,7 @@ body, html {
 
 #mainHeader {
 	text-align: center;
-	margin-top: 125px;
+	margin-top: 115px;
 	padding-left: 65px;
 	max-width: 450px;
 	margin-right: 5px;
@@ -80,10 +80,10 @@ header a {
 	border: 1px solid #5fb839;
 	border-radius: 25px;
 	padding: 15px 15px;
-	margin-top: 100px;
+	margin-top: 90px;
 	background: white;
 	box-shadow: 0px 0px 20px .8px;
-	max-width: 400px;
+	max-width: 450px;
 	color: #60c934;
 	font-weight: bold;
 }
@@ -94,7 +94,7 @@ header a {
 
 .login-messages {
 	margin-right: 100px;
-	max-width: 400px;
+	max-width: 450px;
 }
 
 #login-error, #signUp-error {
@@ -149,6 +149,7 @@ fieldset legend {
 	text-align: center;
 	font-size: 14px;
 	cursor: pointer;
+	z-index: 1000;
 }
 
 /*HOME PAGE CSS*/
@@ -177,11 +178,14 @@ fieldset legend {
 }
 
 .main-nav {
-	float: right;
+	position: fixed;
+	top: 0;
+	right: 0;
 	padding-top: 10px;
 	padding-right: 30px;
 	color: #60c934;
 	font-weight: bold;
+	min-width: 342px;
 }
 
 .main-nav li {
@@ -466,4 +470,118 @@ button {
 	color: white;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+/*RESPONSIVE LOGIN PAGE*/
+@media screen and (max-width: 837px) {
+	#home-img {
+	    margin-top: -100px;
+	}
+
+}
+
+@media screen and (max-width: 757px) {
+	#mainHeader {
+		padding-left: 0px;
+	}
+	#home-img {
+		margin-left: 0px;
+	}
+}
+
+@media screen and (max-width: 630px) {
+	#mainHeader h1 {
+		font-size: 38px;
+		margin-bottom: 0px;
+	}
+	#mainHeader p {
+		margin-top: 10px;
+		margin-bottom: 5px;
+	}
+	#home-img {
+		margin-top: -150px;
+	}
+}
+
+@media screen and (max-width: 511px) {
+	.col-6 {
+	 	float: none;
+	 	width: 100%;
+	 	padding-bottom: 0px;
+	}
+
+	#mainHeader {
+ 		margin-top: 5px;
+    	padding-left: 0px; 
+    	margin-bottom: 20px;
+	}
+	#mainHeader h1 {
+		font-size: 50px;
+	}
+
+	#login, #signUp {
+		margin-top: 5px;
+		width: 90%;
+		margin: 0 auto;
+	}
+	#home-img {
+		width: 85%;
+    	margin: 0 auto;
+    	margin-top: -25px;
+    	padding-left: 70px;
+	}
+	.backLogin {
+		padding-bottom: 5px;
+	}
+}
+
+@media screen and (max-width: 410px) {
+	#mainHeader h1 {
+		font-size: 50px;
+		margin-top: 5px;
+	}
+	#home-img {
+		padding-left: 0px;
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 310px) {
+	#mainHeader h1 {
+		font-size: 40px;
+	}
+		#home-img {
+		padding-left: 0px;
+		width: 100%;
+	}
+}
+
+/*RESPONSIVE LANDING PAGE*/
+
+@media screen and (max-width: 468px) {	
+	.main-nav {
+		display: none;
+	}
+
+	.fas.fa-bars {
+		float: right;
+		position: fixed;
+		right: 0;
+		top: 0;
+		padding-top: 20px;
+		padding-right: 25px;
+		font-size: 35px;
+		color: #60c934;
+	}
+
+	.main-nav li {
+		display: block;
+		float: right;
+	}
+}
+
+@media screen and (min-width: 469px) {
+	.fas.fa-bars {
+		visibility: hidden;
+	}
 }
