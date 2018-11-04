@@ -177,6 +177,14 @@ fieldset legend {
 	float: left;
 }
 
+#logout {
+	float: left;
+    margin-top: 8px;
+    margin-left: 25px;
+    color: green;
+    font-weight: bold
+}
+
 .main-nav {
 	position: fixed;
 	top: 0;
@@ -227,7 +235,6 @@ fieldset legend {
 	margin: 0 10%;
 	padding: 17px;
   	border-radius: 20px;
-/*	background: rgba(255, 255, 255, 0.98);*/
 }
 
 #gardeningBlurb p {
@@ -327,7 +334,7 @@ cite {
 	color: white;
 	background-color: #6495ed;
 	right: 20px;
-	bottom: 30px;
+	bottom: 25px;
 	-webkit-transition: -webkit-transform .6s ease-in-out;
     transition: transform .6s ease-in-out;
     z-index: 5;
@@ -353,7 +360,7 @@ cite {
 }
 
 ul {
-    list-style: none; /* Remove list bullets */
+    list-style: none;
     padding: 0;
     margin: 0;
 }
@@ -452,7 +459,7 @@ hr {
 }
 
 footer {
-	background-image: url("http://pic.90sjimg.com/design/01/34/64/79/58df418cbbbf4.png");
+	background-image: url("images/footer-image.png");
 	background-position: 50% 50%;
 	position: relative;
 	bottom: -42px;
@@ -558,7 +565,8 @@ button {
 
 /*RESPONSIVE LANDING PAGE*/
 
-@media screen and (max-width: 468px) {	
+	/*HEADER*/
+@media screen and (max-width: 553px) {	
 	.main-nav {
 		display: none;
 	}
@@ -580,8 +588,82 @@ button {
 	}
 }
 
-@media screen and (min-width: 469px) {
+@media screen and (min-width: 554px) {
 	.fas.fa-bars {
 		visibility: hidden;
 	}
 }
+
+	/*VERBAGE*/
+@media screen and (max-width: 694px) {
+	blockquote {
+		margin: 5px 20px;
+	}
+	.bq3 {
+		padding-left: 28px;
+	}
+	.bq3 p {
+		padding-right: 10px;
+	}
+	cite {
+		margin-left: 50px;
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	#about, #gardeningBlurb {
+		margin: 1px 16px;
+	}
+	.quotes {
+		width: 100%;
+	}
+}
+
+/*RESPONSIVE SEASONS PAGE*/
+@media screen and (max-width: 800px) {
+	.region-produce, .indiv-produce, .excitedCommon {
+		width: 100%;
+	}
+	.commonList a {
+		left: 0px;
+	}
+}
+
+@media screen and (max-width: 582px) {
+	#excited {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 511px) {
+	.indiv-produce {
+		width: 80%;
+	}
+	.userData.season {
+    margin-top: 40px;
+	}
+}
+
+@media screen and (max-width: 383px) {
+	.indiv-produce {
+		width: 100%
+	}
+}
+
+@media screen and (max-width: 354px) {
+	.indiv-produce h4 {
+		display: block;
+		margin-bottom: 5px;
+		height: 15px;
+	}
+}
+
+@media screen and (max-width: 240px) {
+	.germinateSection span {
+		display: block;
+		margin-top: 20px;
+	}
+}
+
+

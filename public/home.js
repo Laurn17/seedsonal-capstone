@@ -24,6 +24,10 @@ function homePageContent() {
             <a id="logo" href="#"><img src="images/leaf-logo.png" height="60" width="auto">
             </a>
 
+            <div id="logout">
+                <a href="https://seedsonal.herokuapp.com/">Logout</a>
+            </div>
+
             <div class="menuIcon">
                 <i class="fas fa-bars"></i>
             </div>
@@ -204,7 +208,7 @@ function summerCommon() {
                         </ul>
                         <br>
                 </div>            
-                    <a href="https://www.ufseeds.com/learning/planting-schedules/Zone-9-Planting-Calendar" target="_blank">See More Zones</a>
+                <a href="https://www.ufseeds.com/learning/planting-schedules/Zone-9-Planting-Calendar" target="_blank">See More Zones</a>
             </div>`
         ;
 };

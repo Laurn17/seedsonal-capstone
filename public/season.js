@@ -58,7 +58,7 @@ return `
 		</div>
 	</main> 
 
-	<footer role="contentinfo"></footer>`
+	<footer role="contentinfo"><div class="footer-img"></div></footer>`
 };
 
 
