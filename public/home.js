@@ -105,9 +105,10 @@ function watchSeasonClick() {
 };
 
 function watchMenuIconClick() {
-    $('.menuIcon').on('click', function(event) {
+    $('.menuIcon').on('click', 'i', function(event) {
         event.preventDefault();
-        $('nav').prop("visible", true);
+        $('nav').removeProp("hidden");
+        $('nav .main-nav').show();
     });
 };
 
