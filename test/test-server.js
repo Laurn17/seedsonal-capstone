@@ -59,12 +59,9 @@ function generateProduceData() {
 
 
 function tearDownDb() {
-	return new Promise(function(resolve, reject) {
-	console.warn("Deleted database");
-	mongoose.connection.dropDatabase()
-		.then(result => resolve(result))
-		.catch(err => reject(err));
-	});
+    return new Promise((resolve) => {
+        mongoose.connection.collections['produces'].drop(resolve);
+    });
 };
 
 describe("Produce API resource", function() {
@@ -190,8 +187,8 @@ describe("Produce API resource", function() {
 	 			.then(function(produce) {
 	 				expect(produce.germinateIndoors).to.equal(updateData.germinateIndoors);
 	 				expect(produce.seedOrPlant).to.equal(updateData.seedOrPlant);
-	 				expect(produce.plantBy).to.equal(updateData.plantBy);
-					expect(produce.datePlanted).to.equal(updateDate.datePlanted);
+	 				expect(produce.plantBy.toString()).to.equal(updateData.plantBy.toString());
+					expect(produce.datePlanted.toString()).to.equal(updateData.datePlanted.toString());
 	 			});
 	 	});
  	});
