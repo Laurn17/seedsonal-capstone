@@ -16,7 +16,7 @@ const _username = 'testUser';
 
 const token = jwt.sign(
   {
-    user: {
+    username: {
       _username
     }
   },
@@ -61,9 +61,8 @@ function generateProduceData() {
 function tearDownDb() {
 	return new Promise(function(resolve, reject) {
 	console.warn("Deleted database");
-	mongoose.connection.dropDatabase()
-		.then(result => resolve(result))
-		.catch(err => reject(err));
+	mongoose.connection.collections['produces']
+		.drop(resolve)
 	});
 };
 
@@ -135,33 +134,33 @@ describe("Produce API resource", function() {
 		});
 	});
 
-	// describe("POST endpoint", function() {
-	// 	it("should add a new produce item", function() {
+	describe("POST endpoint", function() {
+		it("should add a new produce item", function() {
 
-	// 		const newProduce = generateProduceData();
+			const newProduce = generateProduceData();
 
-	// 		return chai
-	// 			.request(app)
-	// 			.post(`/${season}`)
-	// 			.set('Authorization', `Bearer ${token}`)
-	// 			.send(newProduce)
-	// 			.then(function(res) {
-	// 				expect(res).to.have.status(201);
-	// 				expect(res).to.be.json;
-	// 				expect(res.body).to.be.a("object");
-	// 				expect(res.body).to.include.keys("id", "name", "seedOrPlant", "germinateIndoors", "plantBy");
-	// 				expect(res.body.id).to.not.be.null;
-	// 				return Produce.findById(res.body.id);
-	// 		})
-	// 			.then(function(produce) {
-	// 				expect(produce.id).to.equal(newProduce.id);
-	// 				expect(produce.name).to.equal(newProduce.name);
-	// 				expect(produce.seedOrPlant).to.equal(newProduce.seedOrPlant);
-	// 				expect(produce.germinateIndoors).to.equal(newProduce.germinateIndoors);
-	// 				expect(produce.plantBy).to.equal(newProduce.plantBy);
-	// 			});
-	// 	});
-	// });
+			return chai
+				.request(app)
+				.post(`/${season}`)
+				.set('Authorization', `Bearer ${token}`)
+				.send(newProduce)
+				.then(function(res) {
+					expect(res).to.have.status(201);
+					expect(res).to.be.json;
+					expect(res.body).to.be.a("object");
+					expect(res.body).to.include.keys("id", "name", "seedOrPlant", "germinateIndoors", "plantBy");
+					expect(res.body.id).to.not.be.null;
+					return Produce.findById(res.body.id);
+			})
+				.then(function(produce) {
+					expect(produce.id).to.equal(newProduce.id);
+					expect(produce.name).to.equal(newProduce.name);
+					expect(produce.seedOrPlant).to.equal(newProduce.seedOrPlant);
+					expect(produce.germinateIndoors).to.equal(newProduce.germinateIndoors);
+					expect(produce.plantBy).to.equal(newProduce.plantBy);
+				});
+		});
+	});
 
 	describe("PUT endpoint", function() {
 		it("should update fields sent over", function() {
@@ -190,8 +189,8 @@ describe("Produce API resource", function() {
 	 			.then(function(produce) {
 	 				expect(produce.germinateIndoors).to.equal(updateData.germinateIndoors);
 	 				expect(produce.seedOrPlant).to.equal(updateData.seedOrPlant);
-	 				expect(produce.plantBy).to.equal(updateData.plantBy);
-					expect(produce.datePlanted).to.equal(updateDate.datePlanted);
+	 				expect(produce.plantBy.toString()).to.equal(updateData.plantBy);
+					expect(produce.datePlanted.toString()).to.equal(updateData.datePlanted);
 	 			});
 	 	});
  	});
@@ -199,25 +198,27 @@ describe("Produce API resource", function() {
 
 // describe("DELETE endpoints", function() {
 // 	it("should delete a post by id", function() {
-// 		let blog;
-// 		return BlogPost
+// 		let produce;
+// 		return Produce
 // 			.findOne()
-// 			.then(function(_blog) {
-// 				blog = _blog;
+// 			.then(function(_produce) {
+// 				produce = _produce;
 				
 // 				return chai
 // 				.request(app)
-// 				.delete(`/posts/${blog.id}`);
+// 				.delete(`/${produce.id}`);
 // 			})
 // 			.then(function(res) {
 // 				expect(res).to.have.status(204);
-// 				return BlogPost.findById(blog.id);
+// 				return Produce.findById(produce.id);
 // 			})
-// 			.then(function(_blog) {
-// 				expect(_blog).to.be.null;
+// 			.then(function(_produce) {
+// 				expect(_produce).to.be.null;
 // 			});
 // 	});
 // });
+
+// ??
 
 // describe("requesting root", function() {
 //  it ("should return a 200 status code", function() {
