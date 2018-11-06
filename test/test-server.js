@@ -9,9 +9,11 @@ const mongoose = require("mongoose");
 const expect = chai.expect;
 
 const { Produce } = require("../server/my-produce");
+const { User } = require("../users");
 const { app, runServer, closeServer } = require("../server");
 const { JWT_SECRET, TEST_DATABASE_URL } = require("../config.js");
 
+<<<<<<< HEAD
 const _username = 'testUser';
 
 const token = jwt.sign(
@@ -27,22 +29,38 @@ const token = jwt.sign(
     expiresIn: '7d'
   }
 );
+=======
+let token;
+>>>>>>> 77cfca76cf57ba2a614bde3d1601ff334ba6dea2
 
 chai.use(chaihttp);
 
 
-function seedProduceList() {
-	console.info('Seeding Produce List data');
+function seedProduceList(user) {
+    token = jwt.sign(
+      {
+        user: {
+            username: user.username
+        }
+      },
+      JWT_SECRET,
+      {
+        algorithm: 'HS256',
+        subject: user.username,
+        expiresIn: '7d'
+      }
+    );
 	const seedData = [];
 
+    console.log('user id:', user._id);
 	for (let i = 0; i <=10; i++) {
-		seedData.push(generateProduceData());
+		seedData.push(generateProduceData(user._id));
 	}
 	return Produce.insertMany(seedData);
 };
 
 let produceData = {
-	// username: _username,
+    //username: User.insert({ username: _username, password: 'pass' }),
 	season: faker.random.arrayElement(['spring', 'summer', 'autumn', 'winter']),
 	name: faker.random.word(),
 	germinateIndoors: faker.random.boolean(),
@@ -52,18 +70,26 @@ let produceData = {
 
 const season = produceData.season;
 
-function generateProduceData() {
-	return produceData;
+function generateProduceData(userId) {
+	return Object.assign({ username: userId }, produceData);
 };
 
-
+function createUser() {
+    return User.create({ username: `${Math.random()}`, password: 'password' });
+};
 
 function tearDownDb() {
+<<<<<<< HEAD
 	return new Promise(function(resolve, reject) {
 	console.warn("Deleted database");
 	mongoose.connection.collections['produces']
 		.drop(resolve)
 	});
+=======
+    return new Promise((resolve) => {
+        mongoose.connection.collections['produces'].drop(resolve);
+    });
+>>>>>>> 77cfca76cf57ba2a614bde3d1601ff334ba6dea2
 };
 
 describe("Produce API resource", function() {
@@ -72,13 +98,16 @@ describe("Produce API resource", function() {
 	});
 
 	beforeEach(function() {
-		return seedProduceList();
+        return createUser().then((user) => {
+            return seedProduceList(user);
+        })
 	});
 
 	afterEach(function() {
-		return tearDownDb();
+		//return tearDownDb();
 	});
 
+    //5be0e664b3076c1567bdea5b
 	after(function() {
 		return closeServer();
 	});
@@ -86,8 +115,9 @@ describe("Produce API resource", function() {
 
 	describe("GET endpoint", function() {
 
-		it("should return all existing Produce Lists", function() {
+		it.only("should return all existing Produce Lists", function() {
 			let res;
+            console.log('season', season);
 			return chai
 				.request(app)
 				.get(`/${season}`)
@@ -189,8 +219,13 @@ describe("Produce API resource", function() {
 	 			.then(function(produce) {
 	 				expect(produce.germinateIndoors).to.equal(updateData.germinateIndoors);
 	 				expect(produce.seedOrPlant).to.equal(updateData.seedOrPlant);
+<<<<<<< HEAD
 	 				expect(produce.plantBy.toString()).to.equal(updateData.plantBy);
 					expect(produce.datePlanted.toString()).to.equal(updateData.datePlanted);
+=======
+	 				expect(produce.plantBy.toString()).to.equal(updateData.plantBy.toString());
+					expect(produce.datePlanted.toString()).to.equal(updateData.datePlanted.toString());
+>>>>>>> 77cfca76cf57ba2a614bde3d1601ff334ba6dea2
 	 			});
 	 	});
  	});
