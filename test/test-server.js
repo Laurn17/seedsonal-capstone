@@ -9,40 +9,40 @@ const mongoose = require("mongoose");
 const expect = chai.expect;
 
 const { Produce } = require("../server/my-produce");
+const { User } = require("../users");
 const { app, runServer, closeServer } = require("../server");
 const { JWT_SECRET, TEST_DATABASE_URL } = require("../config.js");
 
-const _username = 'testUser';
-
-const token = jwt.sign(
-  {
-    user: {
-      _username
-    }
-  },
-  JWT_SECRET,
-  {
-    algorithm: 'HS256',
-    subject: _username,
-    expiresIn: '7d'
-  }
-);
+let token;
 
 chai.use(chaihttp);
 
 
-function seedProduceList() {
-	console.info('Seeding Produce List data');
+function seedProduceList(user) {
+    token = jwt.sign(
+      {
+        user: {
+            username: user.username
+        }
+      },
+      JWT_SECRET,
+      {
+        algorithm: 'HS256',
+        subject: user.username,
+        expiresIn: '7d'
+      }
+    );
 	const seedData = [];
 
+    console.log('user id:', user._id);
 	for (let i = 0; i <=10; i++) {
-		seedData.push(generateProduceData());
+		seedData.push(generateProduceData(user._id));
 	}
 	return Produce.insertMany(seedData);
 };
 
 let produceData = {
-	// username: _username,
+    //username: User.insert({ username: _username, password: 'pass' }),
 	season: faker.random.arrayElement(['spring', 'summer', 'autumn', 'winter']),
 	name: faker.random.word(),
 	germinateIndoors: faker.random.boolean(),
@@ -52,11 +52,13 @@ let produceData = {
 
 const season = produceData.season;
 
-function generateProduceData() {
-	return produceData;
+function generateProduceData(userId) {
+	return Object.assign({ username: userId }, produceData);
 };
 
-
+function createUser() {
+    return User.create({ username: `${Math.random()}`, password: 'password' });
+};
 
 function tearDownDb() {
     return new Promise((resolve) => {
@@ -70,13 +72,16 @@ describe("Produce API resource", function() {
 	});
 
 	beforeEach(function() {
-		return seedProduceList();
+        return createUser().then((user) => {
+            return seedProduceList(user);
+        })
 	});
 
 	afterEach(function() {
-		return tearDownDb();
+		//return tearDownDb();
 	});
 
+    //5be0e664b3076c1567bdea5b
 	after(function() {
 		return closeServer();
 	});
@@ -84,8 +89,9 @@ describe("Produce API resource", function() {
 
 	describe("GET endpoint", function() {
 
-		it("should return all existing Produce Lists", function() {
+		it.only("should return all existing Produce Lists", function() {
 			let res;
+            console.log('season', season);
 			return chai
 				.request(app)
 				.get(`/${season}`)
