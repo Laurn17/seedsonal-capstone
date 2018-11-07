@@ -78,7 +78,7 @@ describe("Produce API resource", function() {
 	});
 
 	afterEach(function() {
-		//return tearDownDb();
+		return tearDownDb();
 	});
 
     //5be0e664b3076c1567bdea5b
@@ -89,7 +89,7 @@ describe("Produce API resource", function() {
 
 	describe("GET endpoint", function() {
 
-		it.only("should return all existing Produce Lists", function() {
+		it("should return all existing Produce Lists", function() {
 			let res;
             console.log('season', season);
 			return chai
