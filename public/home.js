@@ -83,6 +83,10 @@ function homePageContent() {
                             <cite>– Thomas Jefferson</cite>
                         <br>
                         <br>
+                        <blockquote  class="bq3" cite="https://www.mnn.com/your-home/organic-farming-gardening/blogs/32-inspirational-gardening-quotes">
+                            <p>Everything that slows us down and forces patience, everything that sets us back into the slow circles of nature, is a help. Gardening is an instrument of grace.</p>
+                        </blockquote>
+                            <cite>– May Sarton</cite>
                     </div>
                 </div>
             </div>
@@ -108,7 +112,7 @@ function watchMenuIconClick() {
     $('.menuIcon').on('click', 'i', function(event) {
         event.preventDefault();
         $('nav').removeProp("hidden");
-        $('nav .main-nav').show();
+        $('nav .main-nav').toggle();
     });
 };
 

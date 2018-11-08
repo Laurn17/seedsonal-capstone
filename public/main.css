@@ -554,6 +554,10 @@ button {
 		padding-left: 0px;
 		width: 100%;
 	}
+
+	.new-Item {
+		margin-left: 20px;
+	}
 }
 
 @media screen and (max-width: 310px) {
@@ -570,8 +574,16 @@ button {
 
 	/*HEADER*/
 @media screen and (max-width: 553px) {	
+
 	.main-nav {
 		display: none;
+		margin-top: 55px;
+		min-width: 0px;
+		padding-right: 0px;
+		padding-top: 0px;
+		background: white;
+		width: 100%;
+		font-size: 12px;
 	}
 
 	.fas.fa-bars {
@@ -583,11 +595,33 @@ button {
 		padding-right: 25px;
 		font-size: 35px;
 		color: #60c934;
+		z-index: 25;
 	}
 
 	.main-nav li {
 		display: block;
 		float: right;
+	}
+
+	.home-page-content {
+		margin-top: 15px;
+	}
+
+	#gardeningBlurb	{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
+	.common-items {
+		margin-top: 120px;
+	}
+
+	#add-item-icon {
+		z-index: 25;
+	}
+
+	footer {
+		bottom: -59px;
 	}
 }
 
