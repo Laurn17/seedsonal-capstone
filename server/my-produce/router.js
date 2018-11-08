@@ -19,8 +19,6 @@ router.use(bodyParser.json());
 // GET BY SEASON
 router.get('/:season', jwtAuth, (req, res) => {
   return Produce
-      // req.params.username is always null since username is not a 
-      // url param (you only have :season above)
     .find({username: req.params.username, season: req.params.season})
     .then(function(produce) {
      	res.json(produce.map(produce => produce.serialize()));
@@ -34,7 +32,6 @@ router.get('/:season', jwtAuth, (req, res) => {
 // GET BY ITEM ID
 router.get('/:id', jwtAuth, (req, res) => {
   return Produce
-      // same probelm here as above
     .find({username: req.params.username, ObjectId: req.params._id})
     .then(function(produce) {
      	res.json(produce.map(produce => produce.serialize()));
@@ -47,9 +44,6 @@ router.get('/:id', jwtAuth, (req, res) => {
 
 // CREATE BY SEASON
 router.post('/:season', jwtAuth, (req, res) => {
-    // you are requiring username here, but should use the username in
-    // the req.user object instead.  This would be a security measure to
-    // prevent other users from creating produce for others.
 	const requiredFields = ['season', 'name', 'plantBy', 'username'];
 	for (let i = 0; i < requiredFields.length; i++) {
 		const field = requiredFields[i];
@@ -59,7 +53,6 @@ router.post('/:season', jwtAuth, (req, res) => {
 			return res.status(400).send(message);
 		}
 	}
-    console.log(req.user);
 	Produce
 	    .create({
 	    	season: req.body.season,
@@ -67,9 +60,7 @@ router.post('/:season', jwtAuth, (req, res) => {
 	    	germinateIndoors: req.body.germinateIndoors,
 			seedOrPlant: req.body.seedOrPlant,
 			plantBy: req.body.plantBy,
-			datePlanted: req.body.datePlanted,
-            // username isn't being passed through here, so all produce items
-            // were not attached to anyone
+			datePlanted: req.body.datePlanted
    		 })
 	    .then(function(produce) {
 	    	res.status(201).json(produce.serialize())

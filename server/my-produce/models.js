@@ -11,12 +11,6 @@ const produceSchema = mongoose.Schema({
 	seedOrPlant: {type: String, enum: ['seed', 'plant']},
 	plantBy: {type: Date, required: true},
 	datePlanted: {type: Date},
-    // the easy thing to do here is to use the username instead of the _id
-    // of the user. 
-    // Harder/better thing to do is to update the UserSchema serialize method
-    // to return the id so you can continue using the user id to map it, and
-    // change username to be userId.  I would do this harder step after you
-    // get the username (easier thing) working.
 	username: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
