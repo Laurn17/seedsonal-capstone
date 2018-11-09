@@ -558,6 +558,7 @@ button {
 	.new-Item {
 		margin-left: 20px;
 		bottom: 5px;
+		z-index: 20;
 	}
 }
 
