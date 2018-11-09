@@ -1,6 +1,3 @@
-// THIS IS WHERE I WILL CODE MY CLIENT-SIDE FUNCTIONS USING $.getJSON
-// and to MANIPULATE THE DOM
-
 'use strict';
 
 // ------------ FUNCTIONS FOR MAIN BROWSER PAGE--------------

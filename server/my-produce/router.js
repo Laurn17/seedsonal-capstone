@@ -1,8 +1,4 @@
 
-// REQUESTS TO GET, POST, PUT, DELETE MY-PRODUCE WILL GO HERE
-
-// app.use('/plants/:season', (req, res) => { req.params.season })
-
 const express = require('express');
 const bodyParser = require('body-parser');
 

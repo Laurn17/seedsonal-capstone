@@ -107,7 +107,6 @@ function displaySeasonProduce(data) {
 };
 
 
-// ---- STILL NEED TO ADD EDIT/DELETE ICON TO WHOLE DIV CREATE EVENT LISTENERS FOR IT
 function displayProduceTitle() {
 	return ` <h2 id="excited">My ${season} Produce</h2>`
 };
@@ -336,10 +335,6 @@ function editSubmit(data) {
 		putEditProduce(produceId, newProduceInfo);
 	});
 };
-
-// function onEditProduceSave() {
-
-// };
 
 function putEditProduce(_id, newProduceInfo) {
 

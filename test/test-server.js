@@ -44,7 +44,6 @@ function seedProduceList(user) {
 };
 
 let produceData = {
-    // username: 
 	season: faker.random.arrayElement(['spring', 'summer', 'autumn', 'winter']),
 	name: faker.random.word(),
 	germinateIndoors: faker.random.boolean(),
@@ -56,7 +55,6 @@ const season = produceData.season;
 
 function generateProduceData(userId) {
 	return produceData;
-	// return Object.assign({ username: userId }, produceData);
 };
 
 function createUser() {
@@ -83,7 +81,6 @@ describe("Produce API resource", function() {
 		return tearDownDb();
 	});
 
-    //5be0e664b3076c1567bdea5b
 	after(function() {
 		return closeServer();
 	});
@@ -201,13 +198,3 @@ describe("Produce API resource", function() {
 
 });
 
-// describe("requesting root", function() {
-//  it ("should return a 200 status code", function() {
-//  	return chai
-//  		.request(app)
-//  		.get("/")
-//  		.then(function(res) {
-//  			expect(res).to.have.status(200);
-//  		});
-//  });
-// });
