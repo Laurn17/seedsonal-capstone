@@ -546,6 +546,14 @@ button {
 }
 
 @media screen and (max-width: 410px) {
+	#logo {
+		border-radius: 50%;
+		padding-top: 6px;
+		margin-left: 15px;
+		margin-top: 0;
+		float: left;
+	}
+
 	#mainHeader h1 {
 		font-size: 50px;
 		margin-top: 5px;
